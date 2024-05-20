@@ -10,3 +10,7 @@ Installation is done by using the [RocketModFix.UnityEngine.Redist][nuget_packag
 
 [nuget_package_RocketModFix.UnityEngine.Redist]: https://www.nuget.org/packages/RocketModFix.UnityEngine.Redist
 [badge_RocketModFix.UnityEngine.Redist]: https://img.shields.io/nuget/v/RocketModFix.UnityEngine.Redist?label=RocketModFix.UnityEngine.Redist&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FRocketModFix.UnityEngine.Redist
+
+## Update
+
+If you want to update redist then run `update.bat` and input the path to the Unturned Managed directory, and commit ;)
