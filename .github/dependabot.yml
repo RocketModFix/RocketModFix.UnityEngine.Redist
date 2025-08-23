@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "sunnamed434"
+    assignees:
+      - "sunnamed434"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
