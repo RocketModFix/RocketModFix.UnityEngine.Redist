@@ -10,9 +10,9 @@ updates:
       timezone: "UTC"
     open-pull-requests-limit: 10
     reviewers:
-      - "sunnamed434"
+      - "@me"
     assignees:
-      - "sunnamed434"
+      - "@me"
     commit-message:
-      prefix: "ci"
+      prefix: "github-actions"
       include: "scope"
