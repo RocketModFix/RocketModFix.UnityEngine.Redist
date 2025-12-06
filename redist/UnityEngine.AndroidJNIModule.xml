@@ -287,7 +287,7 @@ The default value is null.</param>
     </member>
     <member name="P:UnityEngine.Android.AndroidDevice.hardwareType">
       <summary>
-        <para>When running on a Chrome OS device, hardwareType is set to AndroidHardwareType.ChromeOS. It is set to AndroidHardwareType.Generic in all other cases.</para>
+        <para>When running on a ChromeOS device, hardwareType is set to AndroidHardwareType.ChromeOS. It is set to AndroidHardwareType.Generic in all other cases.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Android.AndroidDevice.SetSustainedPerformanceMode(System.Boolean)">
@@ -303,7 +303,7 @@ The default value is null.</param>
     </member>
     <member name="F:UnityEngine.Android.AndroidHardwareType.ChromeOS">
       <summary>
-        <para>Chrome OS devices are capable of running Android apps and typically have a laptop form factor.</para>
+        <para>ChromeOS devices are capable of running Android apps and typically have a laptop form factor.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Android.AndroidHardwareType.Generic">
@@ -455,21 +455,19 @@ The default value is null.</param>
     </member>
     <member name="?:UnityEngine.Android.PermissionCallbacks.PermissionDenied(System.Action`1&lt;System.String&gt;)">
       <summary>
-        <para>Executed when user chooses Deny when requesting permission.</para>
+        <para>Triggered when the user chooses Deny for a permission request.</para>
       </summary>
       <param name="value"></param>
     </member>
     <member name="?:UnityEngine.Android.PermissionCallbacks.PermissionDeniedAndDontAskAgain(System.Action`1&lt;System.String&gt;)">
       <summary>
-        <para>Executed when user chooses Deny And Don't Ask Again (on newer Android versions it is expressed by Denying for the second time) when requesting permission or the operating system determines that it should not be requested again.
-If this event is not subscribed to, PermissionCallbacks.PermissionDenied will be fired as a fallback.
-Unreliable on newer Android versions, recommended to only connect to PermissionCallbacks.PermissionDenied.</para>
+        <para>Triggered when the user chooses Deny And Don't Ask Again for a permission request or denies the permission twice on newer Android versions, or the operating system determines that it should not be requested again.</para>
       </summary>
       <param name="value">Permission name.</param>
     </member>
     <member name="?:UnityEngine.Android.PermissionCallbacks.PermissionGranted(System.Action`1&lt;System.String&gt;)">
       <summary>
-        <para>Executed when user chooses Allow when requesting permission.</para>
+        <para>Triggered when the user chooses Allow for a permission request.</para>
       </summary>
       <param name="value"></param>
     </member>
@@ -516,6 +514,13 @@ Unreliable on newer Android versions, recommended to only connect to PermissionC
       <param name="methodName">Specifies which method to call.</param>
       <param name="args">An array of parameters passed to the method.</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.String,T[])">
+      <summary>
+        <para>Calls a Java method on an object (non-static).</para>
+      </summary>
+      <param name="methodName">Specifies which method to call.</param>
+      <param name="args">An array of parameters passed to the method.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.Call(System.String,System.Object[])">
       <summary>
         <para>Call a Java method on an object.</para>
@@ -523,7 +528,49 @@ Unreliable on newer Android versions, recommended to only connect to PermissionC
       <param name="methodName">Specifies which method to call.</param>
       <param name="args">An array of parameters passed to the method.</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.String,T[])">
+      <summary>
+        <para>Call a Java method on an object.</para>
+      </summary>
+      <param name="methodName">Specifies which method to call.</param>
+      <param name="args">An array of parameters passed to the method.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.IntPtr,System.Object[])">
+      <summary>
+        <para>Calls a Java method on an object (non-static).</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.IntPtr,T[])">
+      <summary>
+        <para>Calls a Java method on an object (non-static).</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.IntPtr,System.Object[])">
+      <summary>
+        <para>Calls a Java method on an object (non-static).</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Call(System.IntPtr,T[])">
+      <summary>
+        <para>Calls a Java method on an object (non-static).</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.String,System.Object[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="methodName">Specifies which method to call.</param>
+      <param name="args">An array of parameters passed to the method.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.String,T[])">
       <summary>
         <para>Call a static Java method on a class.</para>
       </summary>
@@ -536,6 +583,41 @@ Unreliable on newer Android versions, recommended to only connect to PermissionC
       </summary>
       <param name="methodName">Specifies which method to call.</param>
       <param name="args">An array of parameters passed to the method.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.String,T[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="methodName">Specifies which method to call.</param>
+      <param name="args">An array of parameters passed to the method.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.IntPtr,System.Object[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.IntPtr,T[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.IntPtr,System.Object[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.CallStatic(System.IntPtr,T[])">
+      <summary>
+        <para>Call a static Java method on a class.</para>
+      </summary>
+      <param name="args">An array of parameters passed to the method.</param>
+      <param name="methodID">The ID of the method to call.</param>
     </member>
     <member name="M:UnityEngine.AndroidJavaObject.CloneReference">
       <summary>
@@ -552,6 +634,20 @@ Unreliable on newer Android versions, recommended to only connect to PermissionC
       <param name="className">Specifies the Java class name (e.g. "&lt;tt&gt;java.lang.String&lt;tt&gt;" or "&lt;tt&gt;javalangString&lt;tt&gt;").</param>
       <param name="args">An array of parameters passed to the constructor.</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.#ctor(System.IntPtr)">
+      <summary>
+        <para>Create AndroidJavaObject for existing Java object.</para>
+      </summary>
+      <param name="jobject">A reference to existing Java object.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.#ctor(System.IntPtr,System.IntPtr,System.Object[])">
+      <summary>
+        <para>Create AndroidJavaObject (and it's Java counterpart) using given Java class and constructor.</para>
+      </summary>
+      <param name="clazz">A pointer to Java class.</param>
+      <param name="constructorID">A method ID for the constructor to be used.</param>
+      <param name="args">An array of parameters passed to the constructor.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.Dispose">
       <summary>
         <para>IDisposable callback.</para>
@@ -563,18 +659,20 @@ Unreliable on newer Android versions, recommended to only connect to PermissionC
       </summary>
       <param name="fieldName">The name of the field (e.g. int counter; would have fieldName = "counter").</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Get(System.IntPtr)">
+      <summary>
+        <para>Get the value of a field in an object (non-static).</para>
+      </summary>
+      <param name="fieldID">The ID of the field to get.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.GetRawClass">
       <summary>
-        <para>Retrieves the raw &lt;tt&gt;jclass&lt;/tt&gt; pointer to the Java class.
-
-Note: Using raw JNI functions requires advanced knowledge of the Android Java Native Interface (JNI). Please take note.</para>
+        <para>Retrieves the raw jclass pointer to the Java class.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.AndroidJavaObject.GetRawObject">
       <summary>
-        <para>Retrieves the raw &lt;tt&gt;jobject&lt;/tt&gt; pointer to the Java object.
-
-Note: Using raw JNI functions requires advanced knowledge of the Android Java Native Interface (JNI). Please take note.</para>
+        <para>Retrieves the raw jobject pointer to the Java object.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.AndroidJavaObject.GetStatic(System.String)">
@@ -583,6 +681,12 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       </summary>
       <param name="fieldName">The name of the field (e.g. &lt;i&gt;int counter;&lt;/i&gt; would have fieldName = "counter").</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.GetStatic(System.IntPtr)">
+      <summary>
+        <para>Get the value of a static field in an object type.</para>
+      </summary>
+      <param name="fieldID">The ID of the field to get.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.Set(System.String,FieldType)">
       <summary>
         <para>Set the value of a field in an object (non-static).</para>
@@ -590,11 +694,25 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="fieldName">The name of the field (e.g. int counter; would have fieldName = "counter").</param>
       <param name="val">The value to assign to the field. It has to match the field type.</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaObject.Set(System.IntPtr,FieldType)">
+      <summary>
+        <para>Set the value of a field in an object (non-static).</para>
+      </summary>
+      <param name="fieldID">The ID of the field to set.</param>
+      <param name="val">The value to assign to the field. It has to match the field type.</param>
+    </member>
     <member name="M:UnityEngine.AndroidJavaObject.SetStatic(System.String,FieldType)">
       <summary>
         <para>Set the value of a static field in an object type.</para>
       </summary>
       <param name="fieldName">The name of the field (e.g. int counter; would have fieldName = "counter").</param>
+      <param name="val">The value to assign to the field. It has to match the field type.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJavaObject.SetStatic(System.IntPtr,FieldType)">
+      <summary>
+        <para>Set the value of a static field in an object type.</para>
+      </summary>
+      <param name="fieldID">The ID of the field to set.</param>
       <param name="val">The value to assign to the field. It has to match the field type.</param>
     </member>
     <member name="T:UnityEngine.AndroidJavaProxy">
@@ -660,6 +778,16 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="args">Arguments passed from the java vm - converted into AndroidJavaObject, AndroidJavaClass or a primitive.</param>
       <param name="javaArgs">Arguments passed from the java vm - all objects are represented by AndroidJavaObject, int for instance is represented by a java.lang.Integer object.</param>
     </member>
+    <member name="M:UnityEngine.AndroidJavaProxy.Invoke(System.String,System.IntPtr)">
+      <summary>
+        <para>Called by the java vm whenever a method is invoked on the java proxy interface. You can override this to run special code on method invocation, or you can leave the implementation as is, which will convert argument array to AndroidJavaObject[] and call other Invoke.</para>
+      </summary>
+      <param name="methodName">Name of the invoked java method.</param>
+      <param name="javaArgs">A reference to Java object array with arguments passed to this method.</param>
+      <returns>
+        <para>A local reference to Java object, representing the return value.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.AndroidJavaRunnable">
       <summary>
         <para>AndroidJavaRunnable is the Unity representation of a java.lang.Runnable object.</para>
@@ -691,6 +819,14 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallBooleanMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallByteMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
@@ -707,7 +843,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallCharMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallDoubleMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallDoubleMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
       </summary>
@@ -723,7 +875,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallFloatMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallIntMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallIntMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
       </summary>
@@ -739,7 +907,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallLongMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallObjectMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallObjectMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
       </summary>
@@ -755,6 +939,14 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallSByteMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallShortMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
@@ -763,7 +955,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallShortMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticBooleanMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticBooleanMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -787,7 +995,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticCharMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticDoubleMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticDoubleMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -803,7 +1027,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticFloatMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticIntMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticIntMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -819,7 +1059,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticLongMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticObjectMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticObjectMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -835,7 +1091,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticSByteMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticShortMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticShortMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -851,7 +1123,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticStringMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallStaticVoidMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStaticVoidMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Invokes the specified &lt;tt&gt;methodID&lt;tt&gt; static method on a Java object, optionally passing in an array of arguments (&lt;tt&gt;args&lt;tt&gt;).</para>
       </summary>
@@ -867,7 +1155,23 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="methodID"></param>
       <param name="args"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.CallStringMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.CallVoidMethod(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
+      </summary>
+      <param name="obj"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.CallVoidMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Calls a Java instance method defined by &lt;tt&gt;methodID&lt;tt&gt;, optionally passing an array of arguments (&lt;tt&gt;args&lt;tt&gt;) to the method.</para>
       </summary>
@@ -1051,6 +1355,30 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="obj"></param>
       <param name="fieldID"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.GetDirectBufferAddress(System.IntPtr)">
+      <summary>
+        <para>Fetches and returns the starting address of the memory region referenced by the given direct java.nio.Buffer.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.GetDirectBufferCapacity(System.IntPtr)">
+      <summary>
+        <para>Fetches and returns the capacity of the memory region referenced by the given direct java.nio.Buffer.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.GetDirectByteBuffer(System.IntPtr)">
+      <summary>
+        <para>Returns the NativeArray backed by the same memory region as the given direct java.nio.Buffer.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.GetDirectSByteBuffer(System.IntPtr)">
+      <summary>
+        <para>Returns the NativeArray backed by the same memory region as the given direct java.nio.Buffer.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.GetDoubleArrayElement(System.IntPtr,System.Int32)">
       <summary>
         <para>Returns the value of one element of a primitive array.</para>
@@ -1100,6 +1428,11 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       </summary>
       <param name="obj"></param>
       <param name="fieldID"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.GetJavaVM">
+      <summary>
+        <para>Returns the pointer to JavaVM.</para>
+      </summary>
     </member>
     <member name="M:UnityEngine.AndroidJNI.GetLongArrayElement(System.IntPtr,System.Int32)">
       <summary>
@@ -1345,6 +1678,25 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       </summary>
       <param name="size"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.NewDirectByteBuffer(System.Byte*,System.Int64)">
+      <summary>
+        <para>Allocates and returns a direct java.nio.ByteBuffer referring to the block of memory starting at the memory address address and extending capacity bytes.</para>
+      </summary>
+      <param name="buffer"></param>
+      <param name="capacity"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.NewDirectByteBuffer(Unity.Collections.NativeArray`1&lt;System.Byte&gt;)">
+      <summary>
+        <para>Allocates and returns a direct java.nio.ByteBuffer referring to the same block of memory as the given NativeArray.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.NewDirectByteBuffer(Unity.Collections.NativeArray`1&lt;System.SByte&gt;)">
+      <summary>
+        <para>Allocates and returns a direct java.nio.ByteBuffer referring to the same block of memory as the given NativeArray.</para>
+      </summary>
+      <param name="buffer"></param>
+    </member>
     <member name="M:UnityEngine.AndroidJNI.NewDoubleArray(System.Int32)">
       <summary>
         <para>Constructs a new primitive array object.</para>
@@ -1382,6 +1734,14 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <param name="size"></param>
     </member>
     <member name="M:UnityEngine.AndroidJNI.NewObject(System.IntPtr,System.IntPtr,UnityEngine.jvalue[])">
+      <summary>
+        <para>Constructs a new Java object. The method ID indicates which constructor method to invoke. This ID must be obtained by calling GetMethodID() with &lt;init&gt; as the method name and void (V) as the return type.</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methodID"></param>
+      <param name="args"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.NewObjectA(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)">
       <summary>
         <para>Constructs a new Java object. The method ID indicates which constructor method to invoke. This ID must be obtained by calling GetMethodID() with &lt;init&gt; as the method name and void (V) as the return type.</para>
       </summary>
@@ -1444,6 +1804,16 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
         <para>Creates a new local reference frame, in which at least a given number of local references can be created.</para>
       </summary>
       <param name="capacity"></param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNI.RegisterNatives(System.IntPtr,UnityEngine.JNINativeMethod[])">
+      <summary>
+        <para>Registers native methods with the class specified by the clazz argument.</para>
+      </summary>
+      <param name="clazz"></param>
+      <param name="methods"></param>
+      <returns>
+        <para>Zero on success, negative value on error. Falsely succeeds in Editor.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.AndroidJNI.SetBooleanArrayElement(System.IntPtr,System.Int32,System.Boolean)">
       <summary>
@@ -1798,6 +2168,15 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       </summary>
       <param name="array"></param>
     </member>
+    <member name="M:UnityEngine.AndroidJNI.UnregisterNatives(System.IntPtr)">
+      <summary>
+        <para>Unregisters native methods of a class. The class goes back to the state before it was linked or registered with its native method functions.</para>
+      </summary>
+      <param name="clazz"></param>
+      <returns>
+        <para>Zero on success, negative value on error. Falsely succeeds in Editor.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.AndroidJNIHelper">
       <summary>
         <para>Helper interface for JNI interaction; signature creation and method lookups.
@@ -1809,6 +2188,78 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
       <summary>
         <para>Set debug to true to log calls through the AndroidJNIHelper.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.SByte)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Int16)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Int32)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Int64)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Single)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Double)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Char)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Box(System.Boolean)">
+      <summary>
+        <para>Convert primitive to it's object counterpart.</para>
+      </summary>
+      <param name="value">Primitive value to be boxed.</param>
+      <returns>
+        <para>A local reference to Java object.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.AndroidJNIHelper.ConvertFromJNIArray(System.IntPtr)">
       <summary>
@@ -1970,6 +2421,82 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
         <para>Creates the JNI signature string for an object parameter list.</para>
       </summary>
       <param name="args">Array of object for which a signature is to be produced.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.SByte&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Int16&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Int32&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Int64&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Single&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Double&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Char&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="M:UnityEngine.AndroidJNIHelper.Unbox(System.IntPtr,System.Boolean&amp;)">
+      <summary>
+        <para>Converts Java object of a boxed type to its primitive counterpart.</para>
+      </summary>
+      <param name="obj">A Java object that is a counterpart of a primitive type of the value parameter.</param>
+      <param name="value">Destination for the primitive value of obj.</param>
+    </member>
+    <member name="T:UnityEngine.JNINativeMethod">
+      <summary>
+        <para>Defines a single method to beregistered using AndroidJNI.RegisterNatives.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JNINativeMethod.fnPtr">
+      <summary>
+        <para>The function pointer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JNINativeMethod.name">
+      <summary>
+        <para>The name of the method.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JNINativeMethod.signature">
+      <summary>
+        <para>The JNI method signature.</para>
+      </summary>
     </member>
     <member name="A:UnityEngine.AndroidJNIModule">
       <summary>

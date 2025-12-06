@@ -372,7 +372,7 @@
     </member>
     <member name="P:UnityEngine.AI.NavMeshAgent.isStopped">
       <summary>
-        <para>This property holds the stop or resume condition of the NavMesh agent.</para>
+        <para>Use this property to set, or get, whether the NavMesh agent stops or continues its movement along the current path.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshAgent.navMeshOwner">
@@ -473,7 +473,7 @@
       <param name="targetPosition">The final position of the path requested.</param>
       <param name="path">The resulting path.</param>
       <returns>
-        <para>True if a path is found.</para>
+        <para>True if either a complete or partial path is found. False otherwise.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.AI.NavMeshAgent.CompleteOffMeshLink">
@@ -663,7 +663,7 @@
       <param name="buildSettings">Settings for the bake process, see NavMeshBuildSettings.</param>
       <param name="sources">List of input geometry used for baking, they describe the surfaces to walk on or obstacles to avoid.</param>
       <param name="localBounds">Bounding box relative to position and rotation which describes the volume where the NavMesh should be built. Empty bounds is treated as no bounds, i.e. the NavMesh will cover all the inputs.</param>
-      <param name="position">Center of the NavMeshData. This specifies the origin for the NavMesh tiles (See Also: NavMeshBuildSettings.tileSize).</param>
+      <param name="position">Center of the NavMeshData. This specifies the origin for the NavMesh tiles (Additional resources: NavMeshBuildSettings.tileSize).</param>
       <param name="rotation">Orientation of the NavMeshData, you can use this to generate NavMesh with an arbitrary up-vector – e.g. for walkable vertical surfaces.</param>
       <returns>
         <para>Returns a newly built NavMeshData, or null if the NavMeshData was empty or an error occurred.
@@ -672,12 +672,12 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
     </member>
     <member name="M:UnityEditor.AI.NavMeshBuilder.Cancel">
       <summary>
-        <para>Cancel Navmesh construction. (UnityEditor) See Also: NavMeshBuilder.BuildNavMeshAsync</para>
+        <para>Cancel Navmesh construction. (UnityEditor) Additional resources: NavMeshBuilder.BuildNavMeshAsync</para>
       </summary>
     </member>
     <member name="M:UnityEditor.AI.NavMeshBuilder.Cancel(UnityEngine.AI.NavMeshData)">
       <summary>
-        <para>Cancels an asynchronous update of the specified NavMesh data. (UnityEngine) See Also: NavMeshBuilder.UpdateNavMeshDataAsync.</para>
+        <para>Cancels an asynchronous update of the specified NavMesh data. (UnityEngine) Additional resources: NavMeshBuilder.UpdateNavMeshDataAsync.</para>
       </summary>
       <param name="data">The data associated with asynchronous updating.</param>
     </member>
@@ -692,6 +692,19 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
       <param name="markups">List of markups which allows finer control over how objects are collected.</param>
       <param name="results">List where results are stored, the list is cleared at the beginning of the call.</param>
     </member>
+    <member name="M:UnityEngine.AI.NavMeshBuilder.CollectSources(UnityEngine.Bounds,System.Int32,UnityEngine.AI.NavMeshCollectGeometry,System.Int32,System.Boolean,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildMarkup&gt;,System.Boolean,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildSource&gt;)">
+      <summary>
+        <para>Collects renderers or physics colliders, and terrains within a volume. (UnityEngine)</para>
+      </summary>
+      <param name="includedWorldBounds">The queried objects must overlap these bounds to be included in the results.</param>
+      <param name="includedLayerMask">Specifies which layers are included in the query.</param>
+      <param name="geometry">Which type of geometry to collect - e.g. physics colliders.</param>
+      <param name="defaultArea">Area type to assign to results, unless modified by NavMeshMarkup.</param>
+      <param name="generateLinksByDefault">If true, all the source will be considered for generating links. Otherwise, only the marked sources will be considered.</param>
+      <param name="markups">List of markups which allows finer control over how objects are collected.</param>
+      <param name="includeOnlyMarkedObjects">Specifies if only objects with markups are collected.</param>
+      <param name="results">List where results are stored, the list is cleared at the beginning of the call.</param>
+    </member>
     <member name="M:UnityEngine.AI.NavMeshBuilder.CollectSources(UnityEngine.Transform,System.Int32,UnityEngine.AI.NavMeshCollectGeometry,System.Int32,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildMarkup&gt;,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildSource&gt;)">
       <summary>
         <para>Collects renderers or physics colliders, and terrains within a transform hierarchy. (UnityEngine)</para>
@@ -701,6 +714,19 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
       <param name="geometry">Which type of geometry to collect - e.g. physics colliders.</param>
       <param name="defaultArea">Area type to assign to results, unless modified by NavMeshMarkup.</param>
       <param name="markups">List of markups which allows finer control over how objects are collected.</param>
+      <param name="results">List where results are stored, the list is cleared at the beginning of the call.</param>
+    </member>
+    <member name="M:UnityEngine.AI.NavMeshBuilder.CollectSources(UnityEngine.Transform,System.Int32,UnityEngine.AI.NavMeshCollectGeometry,System.Int32,System.Boolean,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildMarkup&gt;,System.Boolean,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildSource&gt;)">
+      <summary>
+        <para>Collects renderers or physics colliders, and terrains within a transform hierarchy. (UnityEngine)</para>
+      </summary>
+      <param name="root">If not null, consider only root and its children in the query; if null, includes everything loaded.</param>
+      <param name="includedLayerMask">Specifies which layers are included in the query.</param>
+      <param name="geometry">Which type of geometry to collect - e.g. physics colliders.</param>
+      <param name="defaultArea">Area type to assign to results, unless modified by NavMeshMarkup.</param>
+      <param name="generateLinksByDefault">If true, all the source will be considered for generating links. Otherwise, only the marked sources will be considered.</param>
+      <param name="markups">List of markups which allows finer control over how objects are collected.</param>
+      <param name="includeOnlyMarkedObjects">Specifies if only objects with markups are collected.</param>
       <param name="results">List where results are stored, the list is cleared at the beginning of the call.</param>
     </member>
     <member name="M:UnityEngine.AI.NavMeshBuilder.UpdateNavMeshData(UnityEngine.AI.NavMeshData,UnityEngine.AI.NavMeshBuildSettings,System.Collections.Generic.List`1&lt;UnityEngine.AI.NavMeshBuildSource&gt;,UnityEngine.Bounds)">
@@ -720,7 +746,7 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
         <para>Asynchronously and incrementally updates the NavMeshData based on the sources. (UnityEngine)</para>
       </summary>
       <param name="data">The NavMeshData to update.</param>
-      <param name="buildSettings">The build settings which is used to update the NavMeshData. The build settings is also hashed along with the data, so changing settings will likely to cause full rebuild.</param>
+      <param name="buildSettings">The build settings used to update the NavMeshData. The build settings are also hashed along with the data, so changing the settings is likely to cause a full rebuild.</param>
       <param name="sources">List of input geometry used for baking, they describe the surfaces to walk on or obstacles to avoid.</param>
       <param name="localBounds">Bounding box relative to position and rotation which describes to volume where the NavMesh should be built.</param>
       <returns>
@@ -732,9 +758,19 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
         <para>The NavMesh build markup allows you to control how certain objects are treated during the NavMesh build process, specifically when collecting sources for building.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildMarkup.applyToChildren">
+      <summary>
+        <para>Use this to specify if the GameObject's children also use these markup settings.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AI.NavMeshBuildMarkup.area">
       <summary>
         <para>The area type to use when override area is enabled.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildMarkup.generateLinks">
+      <summary>
+        <para>Use this to specify whether the GameObject and its children should be included in the link generation process.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildMarkup.ignoreFromBuild">
@@ -745,6 +781,16 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
     <member name="P:UnityEngine.AI.NavMeshBuildMarkup.overrideArea">
       <summary>
         <para>Use this to specify whether the area type of the GameObject and its children should be overridden by the area type specified in this struct.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildMarkup.overrideGenerateLinks">
+      <summary>
+        <para>Use this to specify whether the default links generation condition for the GameObject and its children should be overridden by the generateLinks option specified in this struct.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildMarkup.overrideIgnore">
+      <summary>
+        <para>Set this to true in order to enable the ignoreFromBuild property.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildMarkup.root">
@@ -782,14 +828,29 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
         <para>The agent type ID the NavMesh will be baked for.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildSettings.buildHeightMesh">
+      <summary>
+        <para>Enables the creation of additional data needed to determine the height at any position on the NavMesh more accurately.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.debug">
       <summary>
         <para>Options for collecting debug data during the build process.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildSettings.ledgeDropHeight">
+      <summary>
+        <para>Maximum agent drop height.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.maxJobWorkers">
       <summary>
         <para>The maximum number of worker threads that the build process can utilize when building a NavMesh with these settings.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildSettings.maxJumpAcrossDistance">
+      <summary>
+        <para>Maximum agent jump distance.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.minRegionArea">
@@ -799,12 +860,12 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.overrideTileSize">
       <summary>
-        <para>Enables overriding the default tile size. See Also: tileSize.</para>
+        <para>Enables overriding the default tile size. Additional resources: tileSize.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.overrideVoxelSize">
       <summary>
-        <para>Enables overriding the default voxel size. See Also: voxelSize.</para>
+        <para>Enables overriding the default voxel size. Additional resources: voxelSize.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSettings.tileSize">
@@ -841,9 +902,14 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
         <para>Points to the owning component - if available, otherwise null.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AI.NavMeshBuildSource.generateLinks">
+      <summary>
+        <para>Enables the links generation for this object.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSource.shape">
       <summary>
-        <para>The type of the shape this source describes. See Also: NavMeshBuildSourceShape.</para>
+        <para>The type of the shape this source describes. Additional resources: NavMeshBuildSourceShape.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AI.NavMeshBuildSource.size">
@@ -878,7 +944,7 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
     </member>
     <member name="F:UnityEngine.AI.NavMeshBuildSourceShape.Mesh">
       <summary>
-        <para>Describes a Mesh source for use with NavMeshBuildSource. Mesh sources must be positioned within 100,000 units of the origin and must not exceed 100,000 units in any axis-aligned dimension.</para>
+        <para>Describes a Mesh source for use with NavMeshBuildSource. Mesh sources must be positioned within 100,000 units of the world origin and must not exceed 100,000 units in any axis-aligned dimension.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.AI.NavMeshBuildSourceShape.ModifierBox">
@@ -1168,7 +1234,7 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
     </member>
     <member name="F:UnityEngine.AI.NavMeshPathStatus.PathInvalid">
       <summary>
-        <para>The path is invalid.</para>
+        <para>The path is not valid.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.AI.NavMeshPathStatus.PathPartial">
@@ -1411,8 +1477,8 @@ The newly built NavMeshData, or null if the NavMeshData was empty or an error oc
       <summary>
         <para>Initiates a pathfinding operation between two locations on the NavMesh.</para>
       </summary>
-      <param name="costs">Array of custom cost values for all of the 32 possible area types. Each value must be at least 1.0f. This parameter is optional and defaults to the area costs configured in the project settings. See Also: NavMesh.GetAreaCost.</param>
-      <param name="areaMask">Bitmask with values of 1 set at the indices for areas that can be traversed, and values of 0 for areas that are not traversable. This parameter is optional and defaults to NavMesh.AllAreas, if omitted. See Also:.</param>
+      <param name="costs">Array of custom cost values for all of the 32 possible area types. Each value must be at least 1.0f. This parameter is optional and defaults to the area costs configured in the project settings. Additional resources: NavMesh.GetAreaCost.</param>
+      <param name="areaMask">Bitmask with values of 1 set at the indices for areas that can be traversed, and values of 0 for areas that are not traversable. This parameter is optional and defaults to NavMesh.AllAreas, if omitted. Additional resources:.</param>
       <param name="start">The start location on the NavMesh for the path.</param>
       <param name="end">The location on the NavMesh where the path ends.</param>
       <returns>
@@ -1544,11 +1610,11 @@ False if no connection exists between the two NavMesh nodes.</para>
       <param name="position">World position for which the closest point on the NavMesh needs to be found.</param>
       <param name="extents">Maximum distance, from the specified position, expanding along all three axes, within which NavMesh surfaces are searched.</param>
       <param name="agentTypeID">Identifier for the agent type whose NavMesh surfaces should be selected for this operation. The Humanoid agent type exists for all NavMeshes and has an ID of 0. Other agent types can be defined manually through the Editor. A separate NavMesh surface needs to be baked for each agent type.</param>
-      <param name="areaMask">Bitmask used to represent areas of the NavMesh that should (value of 1) or shouldn't (values of 0) be sampled. This parameter is optional and defaults to NavMesh.AllAreas if unspecified. See Also:.</param>
+      <param name="areaMask">Bitmask used to represent areas of the NavMesh that should (value of 1) or shouldn't (values of 0) be sampled. This parameter is optional and defaults to NavMesh.AllAreas if unspecified. Additional resources:.</param>
       <returns>
         <para>An object with position and valid PolygonId  - when a point on the NavMesh has been found.
 
-An invalid object - when no NavMesh surface with the desired features has been found within the search area. See Also: NavMeshQuery.IsValid.</para>
+An invalid object - when no NavMesh surface with the desired features has been found within the search area. Additional resources: NavMeshQuery.IsValid.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.AI.NavMeshQuery.MoveLocation(UnityEngine.Experimental.AI.NavMeshLocation,UnityEngine.Vector3,System.Int32)">
@@ -1557,7 +1623,7 @@ An invalid object - when no NavMesh surface with the desired features has been f
       </summary>
       <param name="location">Position to be moved across the NavMesh surface.</param>
       <param name="target">World position you require the agent to move to.</param>
-      <param name="areaMask">Bitmask with values of 1 set at the indices corresponding to areas that can be traversed, and with values of 0 for areas that should not be traversed. This parameter can be omitted, in which case it defaults to NavMesh.AllAreas. See Also:.</param>
+      <param name="areaMask">Bitmask with values of 1 set at the indices corresponding to areas that can be traversed, and with values of 0 for areas that should not be traversed. This parameter can be omitted, in which case it defaults to NavMesh.AllAreas. Additional resources:.</param>
       <returns>
         <para>A new location on the NavMesh placed as closely as possible to the specified target position.
 

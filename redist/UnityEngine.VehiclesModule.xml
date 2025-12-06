@@ -54,6 +54,11 @@
         <para>The radius of the wheel, measured in local space.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.WheelCollider.rotationSpeed">
+      <summary>
+        <para>Rotation speed of the wheel, measured in degrees per second.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.WheelCollider.rpm">
       <summary>
         <para>Current wheel axle rotation speed, in rotations per minute (Read Only).</para>

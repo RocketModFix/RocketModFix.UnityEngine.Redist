@@ -49,5 +49,19 @@
         <para>Determines the position of the Sprite used for sorting the SpriteMask.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.SpriteMaskUtility">
+      <summary>
+        <para>Provides utility functions for working with Sprite Masks.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.SpriteMaskUtility.HasSpriteMaskInLayerRange(UnityEngine.Rendering.SortingLayerRange)">
+      <summary>
+        <para>Checks if there are any active Sprite Masks within a specified range.</para>
+      </summary>
+      <param name="range">The inclusive range to search for any Sprite Masks.</param>
+      <returns>
+        <para>True if successful. Returns true if there are any active Sprite Masks within the specified range.</para>
+      </returns>
+    </member>
   </members>
 </doc>

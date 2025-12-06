@@ -77,7 +77,7 @@
     </member>
     <member name="P:UnityEngine.Compass.timestamp">
       <summary>
-        <para>Timestamp (in seconds since 1970) when the heading was last time updated. (Read Only)</para>
+        <para>Indicates the time elapsed since the compass heading was last updated. (Read Only)</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Compass.trueHeading">
@@ -219,7 +219,7 @@
       <summary>
         <para>Should  Back button quit the application?
 
-Only usable on Android, Windows Phone or Windows Tablets.</para>
+Only usable on Android or Universal Windows Platform (UWP).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Input.compass">
@@ -297,6 +297,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Property indicating whether the system handles multiple touches.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Input.penEventCount">
+      <summary>
+        <para>Returns the number of queued pen events that can be accessed by calling GetPenEvent().</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Input.simulateMouseWithTouches">
       <summary>
         <para>Enables/Disables mouse simulation with touches. By default this option is enabled.</para>
@@ -325,6 +330,12 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="P:UnityEngine.Input.touchSupported">
       <summary>
         <para>Returns whether the device on which application is currently running supports touch input.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Input.ClearLastPenContactEvent">
+      <summary>
+        <para>Clears the last stored pen event.
+Calling this function may impact event handling for UIToolKit elements.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Input.GetAccelerationEvent(System.Int32)">
@@ -410,6 +421,14 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       </summary>
       <param name="key"></param>
     </member>
+    <member name="M:UnityEngine.Input.GetLastPenContactEvent">
+      <summary>
+        <para>Returns the PenData for the last stored pen up or down event.</para>
+      </summary>
+      <returns>
+        <para>Pen event details in the struct.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Input.GetMouseButton(System.Int32)">
       <summary>
         <para>Returns whether the given mouse button is held down.</para>
@@ -427,6 +446,15 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Returns true during the frame the user releases the given mouse button.</para>
       </summary>
       <param name="button"></param>
+    </member>
+    <member name="M:UnityEngine.Input.GetPenEvent(System.Int32)">
+      <summary>
+        <para>Returns the PenData for the pen event at the given index in the pen event queue.</para>
+      </summary>
+      <param name="index"></param>
+      <returns>
+        <para>Pen event details in the struct.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Input.GetTouch(System.Int32)">
       <summary>
@@ -451,6 +479,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Resets all input. After ResetInputAxes all axes return to 0 and all buttons return to 0 for one frame.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Input.ResetPenEvents">
+      <summary>
+        <para>Clears the pen event queue.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.LocationInfo">
       <summary>
         <para>Structure describing device location.</para>
@@ -458,12 +491,12 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.LocationInfo.altitude">
       <summary>
-        <para>Geographical device location altitude.</para>
+        <para>Geographical device location altitude in meters.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.LocationInfo.horizontalAccuracy">
       <summary>
-        <para>Horizontal accuracy of the location.</para>
+        <para>Horizontal accuracy radius of the location in meters.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.LocationInfo.latitude">
@@ -478,12 +511,12 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.LocationInfo.timestamp">
       <summary>
-        <para>Timestamp (in seconds since 1970) when location was last time updated.</para>
+        <para>Timestamp (in milliseconds from 1970) of when location data was last updated.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.LocationInfo.verticalAccuracy">
       <summary>
-        <para>Vertical accuracy of the location.</para>
+        <para>Vertical accuracy radius of the location in meters.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.LocationService">
@@ -493,7 +526,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.LocationService.isEnabledByUser">
       <summary>
-        <para>Indicates whether the device allows access the application to access the location service.</para>
+        <para>Indicates whether the device allows the application to access the location service.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.LocationService.lastData">
@@ -570,6 +603,96 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="F:UnityEngine.LocationServiceStatus.Stopped">
       <summary>
         <para>The location service is not running.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.PenData">
+      <summary>
+        <para>Structure describing the status of a pen event.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.contactType">
+      <summary>
+        <para>Contact type of a pen event, can be pen up, pen down, or no contact.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.deltaPos">
+      <summary>
+        <para>The position delta since last pointer event in pixel coordinates.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.penStatus">
+      <summary>
+        <para>Specifies the state of the pen. For example, whether the pen is in contact with the screen or tablet, whether the pen is inverted, and whether buttons are pressed.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.position">
+      <summary>
+        <para>Specifies the position of the pen.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.pressure">
+      <summary>
+        <para>How hard pen pressure is applied, normalized between 0 (no pressure) and 1 (maximum pressure).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.tilt">
+      <summary>
+        <para>Specifies the angle of the pen relative to the X and Y axes, expressed in radians.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenData.twist">
+      <summary>
+        <para>Specifies the rotation of the pen around its axis, expressed in radians.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.PenEventType">
+      <summary>
+        <para>Indicates the type of action of a pen event.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenEventType.NoContact">
+      <summary>
+        <para>No pen contact.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenEventType.PenDown">
+      <summary>
+        <para>A pen down event.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenEventType.PenUp">
+      <summary>
+        <para>A pen up event.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.PenStatus">
+      <summary>
+        <para>Options for specifying the state of the pen. For example, whether the pen is in contact with the screen or tablet, whether the pen is inverted, and whether buttons are pressed. You can combine states using bitwise OR operators.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenStatus.Barrel">
+      <summary>
+        <para>The barrel button on the pen is currently pressed.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenStatus.Contact">
+      <summary>
+        <para>The pen is in contact with the screen or tablet.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenStatus.Eraser">
+      <summary>
+        <para>The pen is in erase mode.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenStatus.Inverted">
+      <summary>
+        <para>The pen is inverted.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.PenStatus.None">
+      <summary>
+        <para>The pen is in a neutral state.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.Touch">

@@ -111,7 +111,7 @@
     </member>
     <member name="M:UnityEngine.NVIDIA.DLSSCommandInitializationData.GetFlag(UnityEngine.NVIDIA.DLSSFeatureFlags)">
       <summary>
-        <para>Helper function. Gets weither if a DLSS feature is set or unset. See Also: NVIDIA.DLSSFeatureFlags.</para>
+        <para>Helper function. Gets weither if a DLSS feature is set or unset. Additional resources: NVIDIA.DLSSFeatureFlags.</para>
       </summary>
       <param name="flag">The feature flag to get the state from.</param>
       <returns>
@@ -120,7 +120,7 @@
     </member>
     <member name="M:UnityEngine.NVIDIA.DLSSCommandInitializationData.SetFlag(UnityEngine.NVIDIA.DLSSFeatureFlags,System.Boolean)">
       <summary>
-        <para>Helper function. Controls the feature flags used by DLSS. See Also: NVIDIA.DLSSFeatureFlags.</para>
+        <para>Helper function. Controls the feature flags used by DLSS. Additional resources: NVIDIA.DLSSFeatureFlags.</para>
       </summary>
       <param name="flag">The feature flag to set or unset.</param>
       <param name="value">Indicates whether to set or unset the flag.</param>
@@ -147,7 +147,7 @@
     </member>
     <member name="P:UnityEngine.NVIDIA.DLSSDebugFeatureInfos.execData">
       <summary>
-        <para>The last execution data which the DLSSContext during execution. See Also: GraphicsDevice.ExecuteDLSS</para>
+        <para>The last execution data which the DLSSContext during execution. Additional resources: GraphicsDevice.ExecuteDLSS</para>
       </summary>
     </member>
     <member name="P:UnityEngine.NVIDIA.DLSSDebugFeatureInfos.featureSlot">
@@ -388,7 +388,7 @@
     </member>
     <member name="T:UnityEngine.NVIDIA.GraphicsDeviceDebugView">
       <summary>
-        <para>Represents a memory snapshot of the current feature states. The memory of the arrays/buffers in this struct are tied to the lifetime of the debug view. See Also: GraphicsDevice.CreateDebugView, GraphicsDevice.UpdateDebugView and GraphicsDevice.DeleteDebugView.</para>
+        <para>Represents a memory snapshot of the current feature states. The memory of the arrays/buffers in this struct are tied to the lifetime of the debug view. Additional resources: GraphicsDevice.CreateDebugView, GraphicsDevice.UpdateDebugView and GraphicsDevice.DeleteDebugView.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.NVIDIA.GraphicsDeviceDebugView.deviceVersion">
@@ -439,7 +439,7 @@
     </member>
     <member name="T:UnityEngine.NVIDIA.OptimalDLSSSettingsData">
       <summary>
-        <para>Represents the performance settings that DLSS recommends based on the system's graphics card and the size of the input and output color buffers. See Also: GraphicsDevice.GetOptimalSettings</para>
+        <para>Represents the performance settings that DLSS recommends based on the system's graphics card and the size of the input and output color buffers. Additional resources: GraphicsDevice.GetOptimalSettings</para>
       </summary>
     </member>
     <member name="P:UnityEngine.NVIDIA.OptimalDLSSSettingsData.maxHeight">

@@ -362,7 +362,7 @@
     </member>
     <member name="P:UnityEngine.Analytics.AnalyticsSessionInfo.sessionFirstRun">
       <summary>
-        <para>Reports whether the current session is the first session since the player installed the game or application.</para>
+        <para>Indicates whether the current session is the first session since the user installed the game or application.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Analytics.AnalyticsSessionInfo.sessionId">

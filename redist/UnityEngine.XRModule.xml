@@ -1425,6 +1425,21 @@ Gets the rotation of a specific node.</para>
                 </para>
       </summary>
     </member>
+    <member name="P:UnityEngine.XR.XRDisplaySubsystem.foveatedRenderingFlags">
+      <summary>
+        <para>Controls optional behavior of the foveated rendering system.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.XRDisplaySubsystem.foveatedRenderingLevel">
+      <summary>
+        <para>Controls the intensity of the foveated rendering system.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.XRDisplaySubsystem.hdrOutputSettings">
+      <summary>
+        <para>The HDROutputSettings for the XR Display Subsystem.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.XR.XRDisplaySubsystem.occlusionMaskScale">
       <summary>
         <para>A scale applied to the standard occulsion mask.</para>
@@ -1505,6 +1520,21 @@ Gets the rotation of a specific node.</para>
       </summary>
       <param name="camera">The camera where late latch end recording is to be done.</param>
     </member>
+    <member name="T:UnityEngine.XR.XRDisplaySubsystem.FoveatedRenderingFlags">
+      <summary>
+        <para>Optional flags to control the foveated rendering system.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.FoveatedRenderingFlags.GazeAllowed">
+      <summary>
+        <para>Allows the platform to use eye tracking to optimize foveated rendering.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.FoveatedRenderingFlags.None">
+      <summary>
+        <para>The default behavior with no extra configuration flags.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.XR.XRDisplaySubsystem.GetCullingParameters(UnityEngine.Camera,System.Int32,UnityEngine.Rendering.ScriptableCullingParameters&amp;)">
       <summary>
         <para>Gets culling parameters for a specific culling pass index.</para>
@@ -1556,6 +1586,15 @@ Gets the rotation of a specific node.</para>
       </summary>
       <returns>
         <para>Count of render passes.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.XRDisplaySubsystem.GetRenderTexture(System.UInt32)">
+      <summary>
+        <para>Given the UnityXRRenderTextureID returned by IUnityXRDisplayInterface::CreateTexture, return the managed UnityEngine.RenderTexture instance.</para>
+      </summary>
+      <param name="unityXrRenderTextureId">The ID number identifying the render texture.</param>
+      <returns>
+        <para>The managed UnityEngine.RenderTexture instance associated with the UnityXRRenderTextureID.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.XR.XRDisplaySubsystem.GetRenderTextureForRenderPass(System.Int32)">
@@ -1610,17 +1649,17 @@ Gets the rotation of a specific node.</para>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.ReprojectionMode.None">
       <summary>
-        <para>Does not stabalize the image for the user's head motion and instead fixes it in the display. Note that this is only comfortable for users when you use it sparingly, for example when the only visible content is a small cursor.</para>
+        <para>Does not stabilize the image for the user's head motion and instead fixes it in the display. Note that this is only comfortable for users when you use it sparingly, for example when the only visible content is a small cursor.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.ReprojectionMode.OrientationOnly">
       <summary>
-        <para>Stabalizes the image only for changes to the user's head orientation, ignores changes in position. This is best for body-locked content that you want to move with the user as they walk around, such as a 360-degree video.</para>
+        <para>Stabilizes the image only for changes to the user's head orientation, ignores changes in position. This is best for body-locked content that you want to move with the user as they walk around, such as a 360-degree video.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.ReprojectionMode.PositionAndOrientation">
       <summary>
-        <para>Stabalizes the image for changes to both the user's head position and orientation. This is best for world-locked content that you want to remain stationary as the user walks around.</para>
+        <para>Stabilizes the image for changes to both the user's head position and orientation. This is best for world-locked content that you want to remain stationary as the user walks around.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.ReprojectionMode.Unspecified">
@@ -1680,15 +1719,6 @@ Gets the rotation of a specific node.</para>
         <para>Returns true if the GPU time spent on the last frame is available. Returns false if that time is unavailable.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.XR.XRDisplaySubsystem.TryGetCompositorGPUTimeLastFrame">
-      <summary>
-        <para>Retrieves the amount of time that the GPU spent executing the compositor renderer during the last frame, as reported by the XR Plugin. Measured in seconds.</para>
-      </summary>
-      <param name="gpuTimeLastFrameCompositor">Outputs the time spent by the GPU for the compositor during the last frame.</param>
-      <returns>
-        <para>Returns true if the GPU time spent on the last frame is available. Returns false if that time is unavailable.</para>
-      </returns>
-    </member>
     <member name="M:UnityEngine.XR.XRDisplaySubsystem.TryGetCompositorGPUTimeLastFrame(System.Single&amp;)">
       <summary>
         <para>Retrieves the amount of time that the GPU spent executing the compositor renderer during the last frame, as reported by the XR Plugin. Measured in seconds.</para>
@@ -1743,6 +1773,26 @@ Gets the rotation of a specific node.</para>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.destRect">
       <summary>
         <para>Destination Rect area that the blit operation wants to blit to.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.foveatedRenderingInfo">
+      <summary>
+        <para>A pointer to a native struct containing platform-specific data for foveated rendering.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.srcHdrColorGamut">
+      <summary>
+        <para>The ColorGamut of the source texture if srcHdrEncoded is true.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.srcHdrEncoded">
+      <summary>
+        <para>Specifies whether the source texture is encoded for use with an HDR display and might require decoding during the blit process.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.srcHdrMaxLuminance">
+      <summary>
+        <para>The maximum luminance in nits of the encoding used for the source texture if srcHdrEncoded is true.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRBlitParams.srcRect">
@@ -1835,6 +1885,11 @@ Gets the rotation of a specific node.</para>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRRenderPass.cullingPassIndex">
       <summary>
         <para>An index that a render pipeline can pass to XR.XRDisplaySubsystem.GetCullingParameters to obtain culling information.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRRenderPass.foveatedRenderingInfo">
+      <summary>
+        <para>A pointer to a native struct containing platform-specific data for foveated rendering.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.XR.XRDisplaySubsystem.XRRenderPass.hasMotionVectorPass">
@@ -1952,11 +2007,11 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>The Tracking Origin Mode that this subsystem is in.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.XR.XRInputSubsystem.TryGetBoundaryPoints">
+    <member name="M:UnityEngine.XR.XRInputSubsystem.TryGetBoundaryPoints(System.Collections.Generic.List`1&lt;UnityEngine.Vector3&gt;)">
       <summary>
         <para>Gets the list of 3D position values that represents the SDK-set boundary.</para>
       </summary>
-      <param name="boundary">The list of boundary points.</param>
+      <param name="boundaryPoints">The list of boundary points.</param>
       <returns>
         <para>True if this XRInputSubsystem supports boundary points and they are available.  Returns false otherwise.</para>
       </returns>
@@ -1978,7 +2033,7 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>True if the method recenters the XRInputSubsystem. Returns false otherwise.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.XR.XRInputSubsystem.TrySetTrackingOriginMode">
+    <member name="M:UnityEngine.XR.XRInputSubsystem.TrySetTrackingOriginMode(UnityEngine.XR.TrackingOriginModeFlags)">
       <summary>
         <para>Attempts to set the TrackingOriginModeFlags of the subsystem.</para>
       </summary>
@@ -2166,6 +2221,11 @@ The units of measurement depend on the provider.</para>
     <member name="F:UnityEngine.XR.XRNode.TrackingReference">
       <summary>
         <para>Represents a stationary physical device that can be used as a point of reference in the tracked area.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.XR.XRNodeState">
+      <summary>
+        <para>Describes the state of a node tracked by an XR system.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.XR.XRNodeState.acceleration">

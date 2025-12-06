@@ -47,7 +47,7 @@
     </member>
     <member name="F:UnityEngine.Video.Video3DLayout.No3D">
       <summary>
-        <para>Video does not have any 3D content.</para>
+        <para>Use this setting if the video doesn't have any 3D content.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.Video3DLayout.OverUnder3D">
@@ -62,27 +62,27 @@
     </member>
     <member name="T:UnityEngine.Video.VideoAspectRatio">
       <summary>
-        <para>Methods used to fit a video in the target area.</para>
+        <para>Use these methods to fit a video into your target area.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.FitHorizontally">
       <summary>
-        <para>Resize proportionally so that width fits the target area, cropping or adding black bars above and below if needed.</para>
+        <para>Resize the image proportionally so that the width fits the target area.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.FitInside">
       <summary>
-        <para>Resize proportionally so that content fits the target area, adding black bars if needed.</para>
+        <para>Resize the image proportionally so that the content fits the target area.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.FitOutside">
       <summary>
-        <para>Resize proportionally so that content fits the target area, cropping if needed.</para>
+        <para>Resize the image proportionally so that the content fits the target area. The VideoPlayer automatically crops the image if needed.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.FitVertically">
       <summary>
-        <para>Resize proportionally so that height fits the target area, cropping or adding black bars on each side if needed.</para>
+        <para>Resize the image proportionally so that the height fits the target area.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.NoScaling">
@@ -92,7 +92,7 @@
     </member>
     <member name="F:UnityEngine.Video.VideoAspectRatio.Stretch">
       <summary>
-        <para>Resize non-proportionally to fit the target area.</para>
+        <para>Resize the image non-proportionally to fit the target area.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.Video.VideoAudioOutputMode">
@@ -127,17 +127,17 @@
     </member>
     <member name="P:UnityEngine.Video.VideoClip.audioTrackCount">
       <summary>
-        <para>Number of audio tracks in the clip.</para>
+        <para>Gets the number of audio tracks that are embedded in the video clip. (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.frameCount">
       <summary>
-        <para>The length of the VideoClip in frames. (Read Only).</para>
+        <para>The length of the video clip in frames. (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.frameRate">
       <summary>
-        <para>The frame rate of the clip in frames/second. (Read Only).</para>
+        <para>The frame rate of the clip in frames per second. (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.height">
@@ -152,17 +152,17 @@
     </member>
     <member name="P:UnityEngine.Video.VideoClip.originalPath">
       <summary>
-        <para>The video clip path in the project's assets. (Read Only).</para>
+        <para>Gets the original video clip file path as it was imported into Unity. (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.pixelAspectRatioDenominator">
       <summary>
-        <para>Denominator of the pixel aspect ratio (num:den). (Read Only).</para>
+        <para>Returns the denominator of the pixel aspect ratio (numerator:denominator). (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.pixelAspectRatioNumerator">
       <summary>
-        <para>Numerator of the pixel aspect ratio (num:den). (Read Only).</para>
+        <para>Returns the numerator of the pixel aspect ratio (numerator:denominator). (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoClip.sRGB">
@@ -177,29 +177,29 @@
     </member>
     <member name="M:UnityEngine.Video.VideoClip.GetAudioChannelCount(System.UInt16)">
       <summary>
-        <para>The number of channels in the audio track.  E.g. 2 for a stereo track.</para>
+        <para>Returns the number of channels in the audio track. For example, if the audio track is a stereo track, this function returns 2.</para>
       </summary>
-      <param name="audioTrackIdx">Index of the audio queried audio track.</param>
+      <param name="audioTrackIdx">Use this index to specify which audio track in the video to use.</param>
       <returns>
         <para>The number of channels.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Video.VideoClip.GetAudioLanguage(System.UInt16)">
       <summary>
-        <para>Get the audio track language.  Can be unknown.</para>
+        <para>Gets the language of the video clip’s audio tracks, if the audio tracks have an assigned language.</para>
       </summary>
-      <param name="audioTrackIdx">Index of the audio queried audio track.</param>
+      <param name="audioTrackIdx">Index of the audio track you want to query in the video.</param>
       <returns>
         <para>The abbreviated name of the language.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Video.VideoClip.GetAudioSampleRate(System.UInt16)">
       <summary>
-        <para>Get the audio track sampling rate in Hertz.</para>
+        <para>Get the audio track sampling rate in hertz (Hz).</para>
       </summary>
       <param name="audioTrackIdx">Index of the audio queried audio track.</param>
       <returns>
-        <para>The sampling rate in Hertz.</para>
+        <para>The sampling rate in hertz.</para>
       </returns>
     </member>
     <member name="T:UnityEngine.Video.VideoPlayer">
@@ -229,7 +229,7 @@
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.canSetPlaybackSpeed">
       <summary>
-        <para>Whether the playback speed can be changed. (Read Only)</para>
+        <para>Whether you can change the playback speed. (Read Only)</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.canSetSkipOnDrop">
@@ -239,12 +239,17 @@
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.canSetTime">
       <summary>
-        <para>Whether current time can be changed using the time or timeFrames property. (Read Only)</para>
+        <para>Whether you can change the current time using the VideoPlayer.time or VideoPlayer.frame properties. (Read Only)</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.canSetTimeSource">
       <summary>
-        <para>Whether the time source followed by the VideoPlayer can be changed. (Read Only)</para>
+        <para>[DEPRECATED] Whether you can change the time source followed by the VideoPlayer. (Read Only)</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Video.VideoPlayer.canSetTimeUpdateMode">
+      <summary>
+        <para>Whether you can change the time source followed by the VideoPlayer. (Read Only)</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.canStep">
@@ -280,9 +285,9 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.errorReceived(UnityEngine.Video.VideoPlayer/ErrorEventHandler)">
       <summary>
-        <para>Errors such as HTTP connection problems are reported through this callback.</para>
+        <para>The VideoPlayer uses this callback to report various types of errors.</para>
       </summary>
-      <param name="value"></param>
+      <param name="value">The error message (string) the VideoPlayer reports.</param>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.externalReferenceTime">
       <summary>
@@ -301,7 +306,7 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.frameDropped(UnityEngine.Video.VideoPlayer/EventHandler)">
       <summary>
-        <para>[NOT YET IMPLEMENTED] Invoked when the video decoder does not produce a frame as per the time source during playback.</para>
+        <para>Invoked when the video decoder does not produce a frame as per the time source during playback.</para>
       </summary>
       <param name="value"></param>
     </member>
@@ -312,9 +317,9 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.frameReady(UnityEngine.Video.VideoPlayer/FrameReadyEventHandler)">
       <summary>
-        <para>Invoked when a new frame is ready.</para>
+        <para>The VideoPlayer invokes this event when a new frame is ready to be displayed.</para>
       </summary>
-      <param name="value"></param>
+      <param name="value">The number of the frame that is ready.</param>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.height">
       <summary>
@@ -333,12 +338,12 @@
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.isPlaying">
       <summary>
-        <para>Whether content is being played. (Read Only)</para>
+        <para>Returns whether the VideoPlayer is currently playing the content.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.isPrepared">
       <summary>
-        <para>Whether the VideoPlayer has successfully prepared the content to be played. (Read Only)</para>
+        <para>Returns whether the VideoPlayer has successfully prepared the content to be played. </para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.length">
@@ -348,9 +353,9 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.loopPointReached(UnityEngine.Video.VideoPlayer/EventHandler)">
       <summary>
-        <para>Invoked when the VideoPlayer reaches the end of the content to play.</para>
+        <para>The VideoPlayer emits this event when the video reaches the end of its playback.</para>
       </summary>
-      <param name="value"></param>
+      <param name="value">The instance of the VideoPlayer that invokes the event.</param>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.pixelAspectRatioDenominator">
       <summary>
@@ -374,9 +379,9 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.prepareCompleted(UnityEngine.Video.VideoPlayer/EventHandler)">
       <summary>
-        <para>Invoked when the VideoPlayer preparation is complete.</para>
+        <para>The VideoPlayer invokes this event when the video is ready for playback.</para>
       </summary>
-      <param name="value"></param>
+      <param name="value">The instance of the VideoPlayer that invoked the event.</param>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.renderMode">
       <summary>
@@ -406,9 +411,9 @@
     </member>
     <member name="?:UnityEngine.Video.VideoPlayer.started(UnityEngine.Video.VideoPlayer/EventHandler)">
       <summary>
-        <para>Invoked immediately after Play is called.</para>
+        <para>The VideoPlayer emits this event when the video starts to play.</para>
       </summary>
-      <param name="value"></param>
+      <param name="value">The instance of the VideoPlayer that invokes the event.</param>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.targetCamera">
       <summary>
@@ -447,7 +452,7 @@
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.time">
       <summary>
-        <para>The presentation time of the currently available frame in VideoPlayer.texture.</para>
+        <para>The presentation time of the currently available frame in VideoPlayer.texture in seconds.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.timeReference">
@@ -457,12 +462,17 @@
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.timeSource">
       <summary>
-        <para>[NOT YET IMPLEMENTED] The source used used by the VideoPlayer to derive its current time.</para>
+        <para>[DEPRECATED] The source used by the VideoPlayer to derive its current time.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Video.VideoPlayer.timeUpdateMode">
+      <summary>
+        <para>The clock source used by the VideoPlayer to derive its current time.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.url">
       <summary>
-        <para>The file or HTTP URL that the VideoPlayer reads content from.</para>
+        <para>The file URL or web URL that the VideoPlayer reads content from.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Video.VideoPlayer.waitForFirstFrame">
@@ -491,9 +501,9 @@
     </member>
     <member name="T:UnityEngine.Video.VideoPlayer.EventHandler">
       <summary>
-        <para>Delegate type for all parameterless events emitted by VideoPlayers.</para>
+        <para>Delegate type for all events without parameters emitted by VideoPlayers.</para>
       </summary>
-      <param name="source">The VideoPlayer that is emitting the event.</param>
+      <param name="source">The VideoPlayer that emits the event.</param>
     </member>
     <member name="T:UnityEngine.Video.VideoPlayer.FrameReadyEventHandler">
       <summary>
@@ -570,12 +580,12 @@
     </member>
     <member name="M:UnityEngine.Video.VideoPlayer.Play">
       <summary>
-        <para>Starts playback.</para>
+        <para>Starts or resumes the playback of a video.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Video.VideoPlayer.Prepare">
       <summary>
-        <para>Initiates playback engine preparation.</para>
+        <para>Prepares the playback engine so that it's ready for playback.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Video.VideoPlayer.SetDirectAudioMute(System.UInt16,System.Boolean)">
@@ -601,7 +611,7 @@
     </member>
     <member name="M:UnityEngine.Video.VideoPlayer.StepForward">
       <summary>
-        <para>Advances the current time by one frame immediately.</para>
+        <para>Immediately advance the current time by one frame.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Video.VideoPlayer.Stop">
@@ -628,12 +638,12 @@
     </member>
     <member name="F:UnityEngine.Video.VideoRenderMode.CameraFarPlane">
       <summary>
-        <para>Draw video content behind a camera's Scene.</para>
+        <para>Draw video content behind a camera's scene.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoRenderMode.CameraNearPlane">
       <summary>
-        <para>Draw video content in front of a camera's Scene.</para>
+        <para>Draw video content in front of a camera's scene.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoRenderMode.MaterialOverride">
@@ -668,22 +678,22 @@
     </member>
     <member name="F:UnityEngine.Video.VideoTimeReference.ExternalTime">
       <summary>
-        <para>External reference clock the Video.VideoPlayer observes to detect and correct drift.</para>
+        <para>The external reference clock the Video.VideoPlayer observes to detect and correct drift.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoTimeReference.Freerun">
       <summary>
-        <para>Disables the drift detection.</para>
+        <para>The video plays without influence from external time sources.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoTimeReference.InternalTime">
       <summary>
-        <para>Internal reference clock the Video.VideoPlayer observes to detect and correct drift.</para>
+        <para>The internal reference clock the Video.VideoPlayer observes to detect and correct drift.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.Video.VideoTimeSource">
       <summary>
-        <para>Time source followed by the Video.VideoPlayer when reading content.</para>
+        <para>[DEPRECATED] Time source followed by the Video.VideoPlayer when reading content.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Video.VideoTimeSource.AudioDSPTimeSource">
@@ -694,6 +704,26 @@
     <member name="F:UnityEngine.Video.VideoTimeSource.GameTimeSource">
       <summary>
         <para>The unscaled game time as defined by Time.realtimeSinceStartup.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.Video.VideoTimeUpdateMode">
+      <summary>
+        <para>Defines the time source the VideoPlayer uses to update the timing of the video playback.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Video.VideoTimeUpdateMode.DSPTime">
+      <summary>
+        <para>Update time based on the DSP (Digital Signal Processing) clock. Use this value to synchronize playback with Audio.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Video.VideoTimeUpdateMode.GameTime">
+      <summary>
+        <para>Update the VideoPlayer's time based on Time.time.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Video.VideoTimeUpdateMode.UnscaledGameTime">
+      <summary>
+        <para>Update the VideoPlayer's time based on Time.unscaledTime.</para>
       </summary>
     </member>
   </members>

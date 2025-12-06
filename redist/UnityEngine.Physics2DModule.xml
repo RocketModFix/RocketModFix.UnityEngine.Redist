@@ -194,9 +194,19 @@
         <para>The world space bounding area of the collider.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Collider2D.callbackLayers">
+      <summary>
+        <para>The Layers that this Collider2D will report collision or trigger callbacks for during a contact with another Collider2D.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Collider2D.composite">
       <summary>
         <para>Get the CompositeCollider2D that is available to be attached to the collider.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Collider2D.contactCaptureLayers">
+      <summary>
+        <para>The layers of other Collider2D involved in contacts with this Collider2D that will be captured.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Collider2D.density">
@@ -209,14 +219,39 @@
         <para>The error state that indicates the state of the physics shapes the 2D Collider tried to create. (Read Only)</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Collider2D.excludeLayers">
+      <summary>
+        <para>The additional Layers that this Collider2D should exclude when deciding if a contact with another Collider2D should happen or not.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Collider2D.forceReceiveLayers">
+      <summary>
+        <para>The Layers that this Collider2D can receive forces from during a Collision contact with another Collider2D.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Collider2D.forceSendLayers">
+      <summary>
+        <para>The Layers that this Collider2D is allowed to send forces to during a Collision contact with another Collider2D.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Collider2D.friction">
       <summary>
         <para>Get the friction used by the collider.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Collider2D.includeLayers">
+      <summary>
+        <para>The additional Layers that this Collider2D should include when deciding if a contact with another Collider2D should happen or not.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Collider2D.isTrigger">
       <summary>
         <para>Is this collider configured as a trigger?</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Collider2D.layerOverridePriority">
+      <summary>
+        <para>A decision priority assigned to this Collider2D used when there is a conflicting decision on whether a contact between itself and another Collision2D should happen or not.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Collider2D.offset">
@@ -712,6 +747,11 @@
     <member name="P:UnityEngine.CompositeCollider2D.pointCount">
       <summary>
         <para>Gets the total number of points in all the paths within the Collider.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.CompositeCollider2D.useDelaunayMesh">
+      <summary>
+        <para>When the value is true, the Collider uses an additional Delaunay triangulation step to produce the Collider mesh. When the value is false, this additional step does not occur.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.CompositeCollider2D.vertexDistance">
@@ -1352,6 +1392,11 @@
         <para>The Rigidbody2D attached to the Joint2D.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Joint2D.breakAction">
+      <summary>
+        <para>The action to take when the joint breaks the Joint2D.breakForce|breakForce or Joint2D.breakTorque|breakTorque.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Joint2D.breakForce">
       <summary>
         <para>The force that needs to be applied for this joint to break.</para>
@@ -1418,6 +1463,31 @@
     <member name="P:UnityEngine.JointAngleLimits2D.min">
       <summary>
         <para>Lower angular limit of rotation.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.JointBreakAction2D">
+      <summary>
+        <para>Options for selecting which action to take when a Joint2D breaks.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JointBreakAction2D.CallbackOnly">
+      <summary>
+        <para>When the Joint2D breaks, call Joint2D.OnJointBreak2D but take no other action.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JointBreakAction2D.Destroy">
+      <summary>
+        <para>When the Joint2D breaks, call Joint2D.OnJointBreak2D and then destroy the component.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JointBreakAction2D.Disable">
+      <summary>
+        <para>When the Joint2D breaks, call Joint2D.OnJointBreak2D and then disable the component.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.JointBreakAction2D.Ignore">
+      <summary>
+        <para>When the Joint2D breaks, no action will be taken and Joint2D.OnJointBreak2D will not be called.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.JointLimitState2D">
@@ -1649,21 +1719,6 @@
     <member name="P:UnityEngine.Physics2D.reuseCollisionCallbacks">
       <summary>
         <para>Determines whether the garbage collector should reuse only a single instance of a Collision2D type for all collision callbacks.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics2D.showColliderAABB">
-      <summary>
-        <para>Should the Collider Gizmos show the AABBs for each Collider?</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics2D.showColliderContacts">
-      <summary>
-        <para>Should the Collider Gizmos show current contacts for each Collider?</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics2D.showColliderSleep">
-      <summary>
-        <para>Should the Collider Gizmos show the sleep-state for each Collider?</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Physics2D.simulationMode">
@@ -4074,6 +4129,11 @@
         <para>Corner points that define the collider's shape in local space.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.PolygonCollider2D.useDelaunayMesh">
+      <summary>
+        <para>When the value is true, the Collider uses an additional Delaunay triangulation step to produce the Collider mesh. When the value is false, this additional step does not occur.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.PolygonCollider2D.CreatePrimitive(System.Int32,UnityEngine.Vector2,UnityEngine.Vector2)">
       <summary>
         <para>Creates as regular primitive polygon with the specified number of sides.</para>
@@ -4122,7 +4182,7 @@
     </member>
     <member name="T:UnityEngine.RaycastHit2D">
       <summary>
-        <para>Information returned about an object detected by a raycast in 2D physics.</para>
+        <para>Returns information about an object detected by a raycast in 2D physics.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.RaycastHit2D.centroid">
@@ -4250,6 +4310,11 @@
         <para>Coefficient of drag.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Rigidbody2D.excludeLayers">
+      <summary>
+        <para>The additional Layers that all Collider2D attached to this Rigidbody2D should exclude when deciding if a contact with another Collider2D should happen or not.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Rigidbody2D.fixedAngle">
       <summary>
         <para>Should the rigidbody be prevented from rotating?</para>
@@ -4263,6 +4328,11 @@
     <member name="P:UnityEngine.Rigidbody2D.gravityScale">
       <summary>
         <para>The degree to which this object is affected by gravity.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Rigidbody2D.includeLayers">
+      <summary>
+        <para>The additional Layers that all Collider2D attached to this Rigidbody2D should include when deciding if a contact with another Collider2D should happen or not.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Rigidbody2D.inertia">
@@ -4308,6 +4378,16 @@
     <member name="P:UnityEngine.Rigidbody2D.sleepMode">
       <summary>
         <para>The sleep state that the rigidbody will initially be in.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Rigidbody2D.totalForce">
+      <summary>
+        <para>The total amount of force that has been explicitly applied to this Rigidbody2D since the last physics simulation step.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Rigidbody2D.totalTorque">
+      <summary>
+        <para>The total amount of torque that has been explicitly applied to this Rigidbody2D since the last physics simulation step.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Rigidbody2D.useAutoMass">
@@ -4981,7 +5061,7 @@
     </member>
     <member name="P:UnityEngine.WheelJoint2D.motor">
       <summary>
-        <para>Parameters for a motor force that is applied automatically to the Rigibody2D along the line.</para>
+        <para>Parameters for a motor force that is applied automatically to the Rigidbody2D along the line.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.WheelJoint2D.suspension">

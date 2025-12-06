@@ -6,12 +6,16 @@
     </assembly>
     <member name="T:UnityEngine.Playables.PlayableDirector">
       <summary>
-        <para>Instantiates a PlayableAsset and controls playback of Playable objects.</para>
+        <para>Instantiates a PlayableGraph from a PlayableAsset and controls playback of Playable objects.
+
+            This API is mainly designed to provide scheduling and scene binding support and scheduling for the Timeline package. Our users may find limited use for it otherwise.
+ 
+            Most of the functionality of this class can be replicated by using PlayableGraph.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Playables.PlayableDirector.duration">
       <summary>
-        <para>The duration of the Playable in seconds.</para>
+        <para>The duration of the currently connected Playable in seconds.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Playables.PlayableDirector.extrapolationMode">
@@ -86,12 +90,12 @@
     </member>
     <member name="M:UnityEngine.Playables.PlayableDirector.DeferredEvaluate">
       <summary>
-        <para>Tells the PlayableDirector to evaluate it's PlayableGraph on the next update.</para>
+        <para>Schedules the PlayableDirector to perform PlayableGraph.Evaluate on the PlayableGraph associated with the PlayableDirector.playableAsset on the next update.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Playables.PlayableDirector.Evaluate">
       <summary>
-        <para>Evaluates the currently playing Playable at  the current time.</para>
+        <para>Immediately performs PlayableGraph.Evaluate on the PlayableGraph associated with the PlayableDirector.playableAsset at PlayableDirector.time.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Playables.PlayableDirector.GetGenericBinding(UnityEngine.Object)">

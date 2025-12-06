@@ -46,9 +46,9 @@
     </member>
     <member name="M:UnityEngine.Audio.AudioMixer.FindMatchingGroups(System.String)">
       <summary>
-        <para>Connected groups in the mixer form a path from the mixer's master group to the leaves. This path has the format "Master GroupChild of Master GroupGrandchild of Master Group", so to find the grandchild group in this example, a valid search string would be for instance "randchi" which would return exactly one group while "hild" or "oup/" would return 2 different groups.</para>
+        <para>Connected groups in the mixer form a path from the mixer's master group to the leaves. This path has the format Master GroupChild of Master GroupGrandchild of Master Group, and so on. For example, in the hierarchy below, the group DROPS has the path MasterWATERDROPS.  To return only the group called DROPS, enter DROPS. The substring MasterAMBIENCE returns three groups, AMBIENCECROWD, AMBIENCEROAD, and AMBIENCE. The substring R would return both ROAD and RIVER.</para>
       </summary>
-      <param name="subPath">Sub-string of the paths to be matched.</param>
+      <param name="subPath">Path sub-strings to match with.</param>
       <returns>
         <para>Groups in the mixer whose paths match the specified search path.</para>
       </returns>
@@ -74,12 +74,10 @@
     </member>
     <member name="M:UnityEngine.Audio.AudioMixer.SetFloat(System.String,System.Single)">
       <summary>
-        <para>Sets the value of the exposed parameter specified. When a parameter is exposed, it is not controlled by mixer snapshots. You can only change the parameter with this function.
-
-Note: Calling this function in MonoBehaviour.Awake will result in unexpected behavior. Use MonoBehaviour.Start instead.</para>
+        <para>Sets the value of the exposed parameter specified. When a parameter is exposed, it is not controlled by mixer snapshots. You can only change the parameter with this function.</para>
       </summary>
-      <param name="name">Name of exposed parameter.</param>
-      <param name="value">New value of exposed parameter.</param>
+      <param name="name">The name of an exposed Audio Mixer group parameter. To expose a parameter, go to the Audio Mixer group's Inspector window, right click the parameter you want to expose, and choose Expose [parameter name] to script.</param>
+      <param name="value">Use to set the exposed Audio Mixer group parameter to a new value.</param>
       <returns>
         <para>Returns false if the exposed parameter was not found or snapshots are currently being edited.</para>
       </returns>
@@ -255,7 +253,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioClip.loadInBackground">
       <summary>
-        <para>Corresponding to the "Load In Background" flag in the inspector, when this flag is set, the loading will happen delayed without blocking the main thread.</para>
+        <para>Enable this property to load the AudioClip asynchronously in the background instead of on the main thread. Set this property in the Inspector (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioClip.loadState">
@@ -270,7 +268,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioClip.preloadAudioData">
       <summary>
-        <para>Preloads audio data of the clip when the clip asset is loaded. When this flag is off, scripts have to call AudioClip.LoadAudioData() to load the data before the clip can be played. Properties like length, channels and format are available before the audio data has been loaded.</para>
+        <para>Enable this property in the Inspector to preload audio data from the audio clip when loading the clip Asset (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioClip.samples">
@@ -376,44 +374,50 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="M:UnityEngine.AudioClip.GetData(System.Single[],System.Int32)">
       <summary>
-        <para>Fills an array with sample data from the clip.</para>
+        <para>Fills an array with sample data from the audio clip.</para>
       </summary>
-      <param name="data"></param>
-      <param name="offsetSamples"></param>
+      <param name="data">The array you want to fill with raw data from the audio clip.</param>
+      <param name="offsetSamples">The index of where to start data extraction from the array of raw data.</param>
+      <returns>
+        <para>Returns 'true' if AudioClip retrieves the data successfully. Returns 'false' if the operation was unsuccessful.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.AudioClip.LoadAudioData">
       <summary>
-        <para>Loads the audio data of a clip. Clips that have "Preload Audio Data" set will load the audio data automatically.</para>
+        <para>Loads the asset data of an AudioClip into memory, so it will immediately be ready to play.</para>
       </summary>
       <returns>
-        <para>Returns true if loading succeeded.</para>
+        <para>Returns true if the clip is loaded into memory.</para>
       </returns>
     </member>
     <member name="T:UnityEngine.AudioClip.PCMReaderCallback">
       <summary>
-        <para>Delegate called each time AudioClip reads data.</para>
+        <para>Unity calls this delegate each time AudioClip reads data.</para>
       </summary>
       <param name="data">Array of floats containing data read from the clip.</param>
     </member>
     <member name="T:UnityEngine.AudioClip.PCMSetPositionCallback">
       <summary>
-        <para>Delegate called each time AudioClip changes read position.</para>
+        <para>Unity calls this delegate each time AudioClip changes read position.</para>
       </summary>
-      <param name="position">New position in the audio clip.</param>
+      <param name="position">The audio clip's new playback position in sample frames.</param>
     </member>
     <member name="M:UnityEngine.AudioClip.SetData(System.Single[],System.Int32)">
       <summary>
-        <para>Set sample data in a clip.</para>
+        <para>Fills an audio clip with sample data from an array or Span. Overwrites existing data if necessary.</para>
       </summary>
-      <param name="data"></param>
-      <param name="offsetSamples"></param>
+      <param name="data">Linear buffer of samples to write to the audio clip buffer.</param>
+      <param name="offsetSamples">Offset from the start of the audio clip at which to begin writing sample data.</param>
+      <returns>
+        <para>Returns whether all samples were successfully written to the audio clip. This can return false if offsetSamples isn't a valid offset within the existing AudioClip, or if the data is empty.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.AudioClip.UnloadAudioData">
       <summary>
         <para>Unloads the audio data associated with the clip. This works only for AudioClips that are based on actual sound file assets.</para>
       </summary>
       <returns>
-        <para>Returns false if unloading failed.</para>
+        <para>Returns `true` if the audio data unloads successfully.</para>
       </returns>
     </member>
     <member name="T:UnityEngine.AudioClipLoadType">
@@ -523,7 +527,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="T:UnityEngine.AudioDataLoadState">
       <summary>
-        <para>Value describing the current load state of the audio data associated with an AudioClip.</para>
+        <para>Value describes the current load state of the audio data associated with an AudioClip.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.AudioDataLoadState.Failed">
@@ -1044,6 +1048,11 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
         <para>Controls the global audio settings from script.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AudioSettings.audioSpatialExperience">
+      <summary>
+        <para>Determines if the Unity app's final mixed audio stream is spatialized.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AudioSettings.driverCapabilities">
       <summary>
         <para>Returns the speaker mode capability of the current audio driver. (Read Only)</para>
@@ -1061,7 +1070,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioSettings.speakerMode">
       <summary>
-        <para>Gets the current speaker mode. Default is 2 channel stereo.</para>
+        <para>AudioSettings.speakerMode is deprecated. Use AudioSettings.GetConfiguration and AudioSettings.Reset to adjust audio settings instead.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.AudioSettings.AudioConfigurationChangeHandler">
@@ -1082,7 +1091,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
       <summary>
         <para>Get the mixer's buffer size in samples.</para>
       </summary>
-      <param name="bufferLength">Is the length of each buffer in the ringbuffer.</param>
+      <param name="bufferLength">Is the length of each buffer in the ring buffer.</param>
       <param name="numBuffers">Is number of buffers.</param>
     </member>
     <member name="M:UnityEngine.AudioSettings.GetSpatializerPluginName">
@@ -1139,13 +1148,13 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="?:UnityEngine.AudioSettings.OnAudioConfigurationChanged(UnityEngine.AudioSettings/AudioConfigurationChangeHandler)">
       <summary>
-        <para>A delegate called whenever the global audio settings are changed, either by AudioSettings.Reset or by an external factor such as the OS control panel changing the sample rate or because the default output device was changed, for example when plugging in an HDMI monitor or a USB headset.</para>
+        <para>Unity calls this event whenever the global audio settings change.</para>
       </summary>
-      <param name="value">True if the change was caused by an device change.</param>
+      <param name="value">This parameter is true if the user changes the audio output device during runtime.</param>
     </member>
     <member name="M:UnityEngine.AudioSettings.Reset(UnityEngine.AudioConfiguration)">
       <summary>
-        <para>Performs a change of the device configuration. In response to this the AudioSettings.OnAudioConfigurationChanged delegate is invoked with the argument deviceWasChanged=false. It cannot be guaranteed that the exact settings specified can be used, but an attempt is made to use the closest match supported by the system.</para>
+        <para>Changes the device configuration and invokes the AudioSettings.OnAudioConfigurationChanged delegate with the argument deviceWasChanged=false. There's no guarantee that the exact settings specified are used, but Unity automatically uses the closest match that it supports. Note: This can cause main thread stalls if AudioSettings.Reset is called when objects are loading asynchronously. </para>
       </summary>
       <param name="config">The new configuration to be used.</param>
       <returns>
@@ -1205,7 +1214,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioSource.isPlaying">
       <summary>
-        <para>Is the clip playing right now (Read Only)?</para>
+        <para>Returns whether the AudioSource is currently playing a clip (Read Only).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioSource.isVirtual">
@@ -1220,7 +1229,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioSource.maxDistance">
       <summary>
-        <para>(Logarithmic rolloff) MaxDistance is the distance a sound stops attenuating at.</para>
+        <para>The distance where sound either becomes inaudible or stops attenuation, depending on the rolloff mode.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioSource.minDistance">
@@ -1260,7 +1269,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioSource.playOnAwake">
       <summary>
-        <para>If set to true, the audio source will automatically start playing on awake.</para>
+        <para>Enable this property to automatically play the audio source when the component or GameObject becomes active.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioSource.priority">
@@ -1305,7 +1314,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="P:UnityEngine.AudioSource.timeSamples">
       <summary>
-        <para>Playback position in PCM samples.</para>
+        <para>The current playback position of the AudioSource in PCM samples.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AudioSource.velocityUpdateMode">
@@ -1380,19 +1389,22 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="M:UnityEngine.AudioSource.GetSpectrumData(System.Single[],System.Int32,UnityEngine.FFTWindow)">
       <summary>
-        <para>Provides a block of the currently playing audio source's spectrum data.</para>
+        <para>Provides the block of audio frequencies (spectrum data) of the AudioSource that is currently playing.</para>
       </summary>
-      <param name="samples">The array to populate with audio samples. Its length must be a power of 2.</param>
+      <param name="samples">The array to populate with frequency domain representations of audio samples. The array length must be a power of 2 (such as 128, 256, 512). Also, the length must not be less than 64 or greater than 8192.</param>
       <param name="channel">The channel to sample from.</param>
       <param name="window">The FFTWindow type to use when sampling.</param>
     </member>
     <member name="M:UnityEngine.AudioSource.GetSpectrumData(System.Int32,System.Int32,UnityEngine.FFTWindow)">
       <summary>
-        <para>Deprecated Version. Returns a block of the currently playing source's spectrum data.</para>
+        <para>This version of GetSpectrumData is obsolete.</para>
       </summary>
       <param name="numSamples">The number of samples to retrieve. Must be a power of 2.</param>
       <param name="channel">The channel to sample from.</param>
       <param name="window">The FFTWindow type to use when sampling.</param>
+      <returns>
+        <para>Returns a block of the currently playing source's spectrum data.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.AudioSource.Pause">
       <summary>
@@ -1417,7 +1429,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
       </summary>
       <param name="clip">Audio data to play.</param>
       <param name="position">Position in world space from which sound originates.</param>
-      <param name="volume">Playback volume.</param>
+      <param name="volume">Playback volume (range from 0.0 - 1.0).</param>
     </member>
     <member name="M:UnityEngine.AudioSource.PlayClipAtPoint(UnityEngine.AudioClip,UnityEngine.Vector3,System.Single)">
       <summary>
@@ -1425,7 +1437,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
       </summary>
       <param name="clip">Audio data to play.</param>
       <param name="position">Position in world space from which sound originates.</param>
-      <param name="volume">Playback volume.</param>
+      <param name="volume">Playback volume (range from 0.0 - 1.0).</param>
     </member>
     <member name="M:UnityEngine.AudioSource.PlayDelayed(System.Single)">
       <summary>
@@ -1438,18 +1450,18 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
         <para>Plays an AudioClip, and scales the AudioSource volume by volumeScale.</para>
       </summary>
       <param name="clip">The clip being played.</param>
-      <param name="volumeScale">The scale of the volume (0-1).</param>
+      <param name="volumeScale">The scale of the volume. Unity automatically clamps negative scales to zero. Note: Scales larger than one might cause clipping.</param>
     </member>
     <member name="M:UnityEngine.AudioSource.PlayOneShot(UnityEngine.AudioClip,System.Single)">
       <summary>
         <para>Plays an AudioClip, and scales the AudioSource volume by volumeScale.</para>
       </summary>
       <param name="clip">The clip being played.</param>
-      <param name="volumeScale">The scale of the volume (0-1).</param>
+      <param name="volumeScale">The scale of the volume. Unity automatically clamps negative scales to zero. Note: Scales larger than one might cause clipping.</param>
     </member>
     <member name="M:UnityEngine.AudioSource.PlayOnGamepad(System.Int32)">
       <summary>
-        <para>Enable playing of audio source though a specfic gamepad.</para>
+        <para>Enable the audio source to play through a specific gamepad.</para>
       </summary>
       <param name="slot">Slot number of the gamepad (0-3).</param>
       <returns>
@@ -1534,6 +1546,26 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     <member name="F:UnityEngine.AudioSourceCurveType.Spread">
       <summary>
         <para>The 3D Spread.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.AudioSpatialExperience">
+      <summary>
+        <para>Defines the types of audio spatialization experience available in player and audio settings.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.AudioSpatialExperience.Bypassed">
+      <summary>
+        <para>The spatialization post-processing step is bypassed.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.AudioSpatialExperience.Fixed">
+      <summary>
+        <para>Spatialization is performed in a fixed, consistent manner. User movements do not affect spatialization.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.AudioSpatialExperience.HeadTracked">
+      <summary>
+        <para>Spatialization is performed based on the user's position and rotation, so head-tracking is enabled.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.AudioSpeakerMode">
@@ -1751,22 +1783,22 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="F:UnityEngine.FFTWindow.Blackman">
       <summary>
-        <para>W[n] = 0.42 - (0.5 * COS(nN) ) + (0.08 * COS(2.0 * nN) ).</para>
+        <para>W[n] = 0.42 - 0.5 * cos(2π * nN) + 0.08 * cos(4π * nN).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.FFTWindow.BlackmanHarris">
       <summary>
-        <para>W[n] = 0.35875 - (0.48829 * COS(1.0 * nN)) + (0.14128 * COS(2.0 * nN)) - (0.01168 * COS(3.0 * n/N)).</para>
+        <para>W[n] = 0.35875 - 0.48829 * cos(2π * nN) + 0.14128 * cos(4π * nN) - 0.01168 * cos(6π * n/N).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.FFTWindow.Hamming">
       <summary>
-        <para>W[n] = 0.54 - (0.46 * COS(n/N) ).</para>
+        <para>W[n] = 0.54 - 0.46 * cos(2π * n/N).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.FFTWindow.Hanning">
       <summary>
-        <para>W[n] = 0.5 * (1.0 - COS(n/N) ).</para>
+        <para>W[n] = 0.5 * (1.0 - cos(2π * n/N)).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.FFTWindow.Rectangular">
@@ -1776,7 +1808,7 @@ Note: Calling this function in MonoBehaviour.Awake will result in unexpected beh
     </member>
     <member name="F:UnityEngine.FFTWindow.Triangle">
       <summary>
-        <para>W[n] = TRI(2n/N).</para>
+        <para>W[n] = 1 - abs(2n/N - 1).</para>
       </summary>
     </member>
     <member name="T:UnityEngine.GamepadSpeakerOutputType">

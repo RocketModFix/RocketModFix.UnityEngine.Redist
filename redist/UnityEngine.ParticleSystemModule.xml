@@ -52,14 +52,11 @@
     </member>
     <member name="M:UnityEngine.ParticlePhysicsExtensions.GetCollisionEvents(UnityEngine.ParticleSystem,UnityEngine.GameObject,UnityEngine.ParticleCollisionEvent[])">
       <summary>
-        <para>Get the particle collision events for a GameObject. Returns the number of events written to the array.</para>
+        <para>Deprecated: Use the overload that takes a List. That overload doesn't create garbage.</para>
       </summary>
-      <param name="go">The GameObject for which to retrieve collision events.</param>
-      <param name="collisionEvents">Array to write collision events to.</param>
-      <param name="ps">The Particle System that owns the potentially colliding particles.</param>
-      <returns>
-        <para>The number of collision events.</para>
-      </returns>
+      <param name="ps"></param>
+      <param name="go"></param>
+      <param name="collisionEvents"></param>
     </member>
     <member name="M:UnityEngine.ParticlePhysicsExtensions.GetSafeCollisionEventSize(UnityEngine.ParticleSystem)">
       <summary>
@@ -110,7 +107,7 @@
     </member>
     <member name="T:UnityEngine.ParticleSystem">
       <summary>
-        <para>Script interface for ParticleSystem. Unity's powerful and versatile particle system implementation.</para>
+        <para>Script interface for the Built-in Particle System. Unity's powerful and versatile particle system implementation.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.automaticCullingEnabled">
@@ -171,6 +168,16 @@
     <member name="P:UnityEngine.ParticleSystem.gravityModifier">
       <summary>
         <para>Scale being applied to the gravity defined by Physics.gravity.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.has3DParticleRotations">
+      <summary>
+        <para>Determines whether the Particle System rotates its particles around only the Z axis, or whether the system specifies separate values for the X, Y and Z axes.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.hasNonUniformParticleSizes">
+      <summary>
+        <para>Determines whether the Particle System uses a single value for the width and height (and depth, when using meshes), or if the system specifies different values for each axis.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.inheritVelocity">
@@ -341,6 +348,11 @@
     <member name="P:UnityEngine.ParticleSystem.time">
       <summary>
         <para>Playback position in seconds.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.totalTime">
+      <summary>
+        <para>Total playback time in seconds, including the Start Delay setting.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.trails">
@@ -1267,7 +1279,7 @@
 
 This method allows you to get the trail data without creating any garbage, if you presize the trail data.
 
-See Also: Trails, SetTrails, GetPlaybackState.</para>
+Additional resources: Trails, SetTrails, GetPlaybackState.</para>
       </summary>
       <param name="trailData">The current Trails belonging to the Particle System.</param>
       <returns>
@@ -1529,12 +1541,17 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
     </member>
     <member name="P:UnityEngine.ParticleSystem.MainModule.gravityModifier">
       <summary>
-        <para>A scale that this Particle System applies to gravity, defined by Physics.gravity.</para>
+        <para>A scale that this Particle System applies to gravity, defined either by Physics.gravity or [Physics2D.gravity]].</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.MainModule.gravityModifierMultiplier">
       <summary>
         <para>Change the gravity multiplier.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.MainModule.gravitySource">
+      <summary>
+        <para>Specify whether to use the gravity strength from the 2D or 3D physics system.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.MainModule.loop">
@@ -3178,6 +3195,11 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
         <para>Choose whether the U coordinate of the trail Texture is tiled or stretched.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.TrailModule.textureScale">
+      <summary>
+        <para>A multiplier for the UV coordinates of the trail texture.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.TrailModule.widthOverTrail">
       <summary>
         <para>The curve describing the width of each trail point.</para>
@@ -3503,6 +3525,61 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
     <member name="F:UnityEngine.ParticleSystemAnimationType.WholeSheet">
       <summary>
         <para>Animate over the whole texture sheet from left to right, top to bottom.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.ParticleSystemBakeMeshOptions">
+      <summary>
+        <para>Configure how a Particle System is baked into a mesh.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeMeshOptions.BakePosition">
+      <summary>
+        <para>Bake the Transform position into the mesh.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeMeshOptions.BakeRotationAndScale">
+      <summary>
+        <para>Bake the Transform rotation and scale into the mesh.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeMeshOptions.Default">
+      <summary>
+        <para>The default baking options.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.ParticleSystemBakeTextureOptions">
+      <summary>
+        <para>Configure how a Particle System is baked into a texture.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.BakePosition">
+      <summary>
+        <para>Bake the Transform position into the texture.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.BakeRotationAndScale">
+      <summary>
+        <para>Bake the Transform rotation and scale into the texture.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.Default">
+      <summary>
+        <para>The default baking options.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.IncludeParticleIndices">
+      <summary>
+        <para>Instead of only baking triangle indices into the indices texture, bake a 2 channel index texture containing triangle indices and particle indices.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.PerParticle">
+      <summary>
+        <para>Only bake each particle, instead of each vertex of each particle (i.e. 1 vertex per billboard).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemBakeTextureOptions.PerVertex">
+      <summary>
+        <para>Bake each vertex of each particle (i.e. 4 vertices per billboard).</para>
       </summary>
     </member>
     <member name="T:UnityEngine.ParticleSystemColliderQueryMode">
@@ -3865,6 +3942,21 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
         <para>Use a random value between 2 color gradients for the ParticleSystem.MinMaxGradient.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.ParticleSystemGravitySource">
+      <summary>
+        <para>Options for which physics system to use the gravity setting from.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemGravitySource.Physics2D">
+      <summary>
+        <para>Use gravity from the 2D physics system.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemGravitySource.Physics3D">
+      <summary>
+        <para>Use gravity from the 3D physics system.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.ParticleSystemInheritVelocityMode">
       <summary>
         <para>How to apply emitter velocity to particles.</para>
@@ -3891,6 +3983,16 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
       </summary>
       <param name="jobData">Contains the particle properties.</param>
     </member>
+    <member name="T:UnityEngine.ParticleSystemJobs.IJobParticleSystemExtensions">
+      <summary>
+        <para>Extension methods for Jobs using the IJobParticleSystem interface.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemJobs.IJobParticleSystemExtensions.EarlyJobInit">
+      <summary>
+        <para>Gathers and caches reflection data for the internal job system's managed bindings. Unity is responsible for calling this method - don't call it yourself.</para>
+      </summary>
+    </member>
     <member name="?:UnityEngine.ParticleSystemJobs.IJobParticleSystemParallelFor">
       <summary>
         <para>Inherit from this interface to implement a Particle System job.</para>
@@ -3915,6 +4017,26 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
       <param name="jobData">Contains the particle properties.</param>
       <param name="startIndex">The first particle index that this job should process.</param>
       <param name="count">The number of particles that this job should process.</param>
+    </member>
+    <member name="T:UnityEngine.ParticleSystemJobs.IJobParticleSystemParallelForBatchExtensions">
+      <summary>
+        <para>Extension methods for Jobs using the IJobParticleSystemParallelForBatch interface.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemJobs.IJobParticleSystemParallelForBatchExtensions.EarlyJobInit">
+      <summary>
+        <para>Gathers and caches reflection data for the internal job system's managed bindings. Unity is responsible for calling this method - don't call it yourself.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.ParticleSystemJobs.IJobParticleSystemParallelForExtensions">
+      <summary>
+        <para>Extension methods for Jobs using the IJobParticleSystemParallelFor interface.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemJobs.IJobParticleSystemParallelForExtensions.EarlyJobInit">
+      <summary>
+        <para>Gathers and caches reflection data for the internal job system's managed bindings. Unity is responsible for calling this method - don't call it yourself.</para>
+      </summary>
     </member>
     <member name="T:UnityEngine.ParticleSystemJobs.ParticleSystemJobData">
       <summary>
@@ -4116,6 +4238,11 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
         <para>Use this class to render particles on to the screen.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystemRenderer.activeTrailVertexStreamsCount">
+      <summary>
+        <para>The number of currently active custom trail vertex streams.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystemRenderer.activeVertexStreamsCount">
       <summary>
         <para>The number of currently active custom vertex streams.</para>
@@ -4188,7 +4315,7 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
     </member>
     <member name="P:UnityEngine.ParticleSystemRenderer.normalDirection">
       <summary>
-        <para>Specifies how much a billboard particle orients its normals towards the Camera.</para>
+        <para>Specifies how to calculate lighting for the billboard.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystemRenderer.pivot">
@@ -4245,69 +4372,185 @@ See Also: Trails, SetTrails, GetPlaybackState.</para>
         <para>true if the queried streams are enabled. Returns false otherwise.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh)">
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh,UnityEngine.ParticleSystemBakeMeshOptions)">
       <summary>
-        <para>Creates a snapshot of ParticleSystemRenderer and stores it in mesh.</para>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
       <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+      <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh,UnityEngine.Camera,UnityEngine.ParticleSystemBakeMeshOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
+      </summary>
+      <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+      <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
+      </summary>
+      <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh,System.Boolean)">
       <summary>
-        <para>Creates a snapshot of ParticleSystemRenderer and stores it in mesh.</para>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
       <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh,UnityEngine.Camera)">
       <summary>
-        <para>Creates a snapshot of ParticleSystemRenderer and stores it in mesh.</para>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
       <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeMesh(UnityEngine.Mesh,UnityEngine.Camera,System.Boolean)">
       <summary>
-        <para>Creates a snapshot of ParticleSystemRenderer and stores it in mesh.</para>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particles.</param>
       <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+      <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTexture(UnityEngine.Texture2D&amp;,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle vertices.</param>
+      <param name="indicesTexture">An optional Texture2D to receive the snapshot of the particle indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTexture(UnityEngine.Texture2D&amp;,UnityEngine.Camera,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle vertices.</param>
+      <param name="indicesTexture">An optional Texture2D to receive the snapshot of the particle indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTexture(UnityEngine.Texture2D&amp;,UnityEngine.Texture2D&amp;,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle vertices.</param>
+      <param name="indicesTexture">An optional Texture2D to receive the snapshot of the particle indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTexture(UnityEngine.Texture2D&amp;,UnityEngine.Texture2D&amp;,UnityEngine.Camera,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystemRenderer and stores it in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle vertices.</param>
+      <param name="indicesTexture">An optional Texture2D to receive the snapshot of the particle indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh,UnityEngine.ParticleSystemBakeMeshOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
+      </summary>
+      <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
+      <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+      <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh,UnityEngine.Camera,UnityEngine.ParticleSystemBakeMeshOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
+      </summary>
+      <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
+      <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh)">
       <summary>
-        <para>Creates a snapshot of ParticleSystem Trails and stores them in mesh.</para>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
       <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh,System.Boolean)">
       <summary>
-        <para>Creates a snapshot of ParticleSystem Trails and stores them in mesh.</para>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
       <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh,UnityEngine.Camera)">
       <summary>
-        <para>Creates a snapshot of ParticleSystem Trails and stores them in mesh.</para>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
       <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsMesh(UnityEngine.Mesh,UnityEngine.Camera,System.Boolean)">
       <summary>
-        <para>Creates a snapshot of ParticleSystem Trails and stores them in mesh.</para>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a mesh.</para>
       </summary>
       <param name="mesh">A static Mesh to receive the snapshot of the particle trails.</param>
       <param name="camera">The Camera used to determine which way camera-space trails face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
       <param name="useTransform">Specifies whether to include the rotation and scale of the Transform in the baked Mesh.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsTexture(UnityEngine.Texture2D&amp;,UnityEngine.Texture2D&amp;,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle trail vertices.</param>
+      <param name="indicesTexture">A Texture2D to receive the snapshot of the particle trail indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System trails.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.BakeTrailsTexture(UnityEngine.Texture2D&amp;,UnityEngine.Texture2D&amp;,UnityEngine.Camera,UnityEngine.ParticleSystemBakeTextureOptions)">
+      <summary>
+        <para>Creates a snapshot of ParticleSystem Trails and stores them in a Texture2D.</para>
+      </summary>
+      <param name="verticesTexture">A Texture2D to receive the snapshot of the particle trail vertices.</param>
+      <param name="indicesTexture">A Texture2D to receive the snapshot of the particle trail indices.</param>
+      <param name="camera">The Camera used to determine which way camera-space particles face.</param>
+      <param name="options">Specifies whether to include the rotation and scale of the Transform in the baked Texture2D.</param>
+      <returns>
+        <para>The number of indices used by the Particle System trails.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.DisableVertexStreams(UnityEngine.ParticleSystemVertexStreams)">
       <summary>
@@ -4321,6 +4564,12 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>Enable a set of vertex Shader streams on the Particle System renderer.</para>
       </summary>
       <param name="streams">Streams to enable.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.GetActiveTrailVertexStreams(System.Collections.Generic.List`1&lt;UnityEngine.ParticleSystemVertexStream&gt;)">
+      <summary>
+        <para>Queries which trail Vertex Shader streams are enabled on the ParticleSystemRenderer.</para>
+      </summary>
+      <param name="streams">The array of streams to populate.</param>
     </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.GetActiveVertexStreams(System.Collections.Generic.List`1&lt;UnityEngine.ParticleSystemVertexStream&gt;)">
       <summary>
@@ -4355,9 +4604,15 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>The number of weights this function wrote to the destination array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.SetActiveTrailVertexStreams(System.Collections.Generic.List`1&lt;UnityEngine.ParticleSystemVertexStream&gt;)">
+      <summary>
+        <para>Enables a set of Vertex Shader streams on the ParticleSystemRenderer for particle trails.</para>
+      </summary>
+      <param name="streams">The new array of enabled vertex streams.</param>
+    </member>
     <member name="M:UnityEngine.ParticleSystemRenderer.SetActiveVertexStreams(System.Collections.Generic.List`1&lt;UnityEngine.ParticleSystemVertexStream&gt;)">
       <summary>
-        <para>Enables a set of vertex Shader streams on the ParticleSystemRenderer.</para>
+        <para>Enables a set of Vertex Shader streams on the ParticleSystemRenderer.</para>
       </summary>
       <param name="streams">The new array of enabled vertex streams.</param>
     </member>
@@ -4686,9 +4941,19 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>Sort based on depth from the camera plane.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ParticleSystemSortMode.DepthReverse">
+      <summary>
+        <para>Sort based on reverse depth from the camera plane.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ParticleSystemSortMode.Distance">
       <summary>
         <para>Sort based on distance to the camera position. For orthographic cameras, this mode is the same as sorting by depth.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemSortMode.DistanceReverse">
+      <summary>
+        <para>Sort based on reverse distance to the camera position. For orthographic cameras, this mode is the same as sorting by depth.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemSortMode.None">
@@ -4846,6 +5111,11 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>Repeat the texture along the trail, repeating at a rate of once per trail segment. To adjust the tiling rate, use Material.SetTextureScale.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ParticleSystemTrailTextureMode.Static">
+      <summary>
+        <para>Trails do not change the texture coordinates of existing points when they add or remove points.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ParticleSystemTrailTextureMode.Stretch">
       <summary>
         <para>Map the texture once along the entire length of the trail.</para>
@@ -4911,6 +5181,11 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>The color of each particle.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.ColorPackedAsTwoFloats">
+      <summary>
+        <para>The color of each particle, packed in a special format to allow decoding on GPUs that do not support bit-packing operations.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.Custom1X">
       <summary>
         <para>One custom value for each particle, defined by the Custom Data Module, or ParticleSystem.SetCustomParticleData.</para>
@@ -4956,9 +5231,19 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>The reciprocal of the starting lifetime, in seconds (1.0f / startLifetime).</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.MeshAxisOfRotation">
+      <summary>
+        <para>The axis of rotation used by mesh particles when not using 3D rotation.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.MeshIndex">
       <summary>
         <para>The index of the mesh used by the current particle.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.NextTrailCenter">
+      <summary>
+        <para>The center of the next trail position, connected to the current position.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.NoiseImpulseX">
@@ -4996,9 +5281,24 @@ The position stream is always enabled, and any attempts to remove it are ignored
         <para>The vertex normal of each particle.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.ParticleIndex">
+      <summary>
+        <para>The index of the current particle in the particle data array.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.PercentageAlongTrail">
+      <summary>
+        <para>The percentage along the trail, in the range 0-1.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.Position">
       <summary>
         <para>The position of each particle vertex, in world space.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.PreviousTrailCenter">
+      <summary>
+        <para>The center of the previous trail position, connected to the current position.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.Rotation">
@@ -5064,6 +5364,11 @@ The position stream is always enabled, and any attempts to remove it are ignored
     <member name="F:UnityEngine.ParticleSystemVertexStream.Tangent">
       <summary>
         <para>The tangent vector for each particle (for normal mapping).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.TrailWidth">
+      <summary>
+        <para>The width of the trail.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.UV">

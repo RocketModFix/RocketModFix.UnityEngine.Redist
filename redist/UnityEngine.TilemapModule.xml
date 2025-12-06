@@ -202,42 +202,47 @@ Only one class at any one time should set defaultBrush to true.</para>
     </member>
     <member name="T:UnityEngine.GridBrushBase.Tool">
       <summary>
-        <para>Tool mode for the GridBrushBase.</para>
+        <para>Options for the Tool mode of the GridBrushBase.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Box">
       <summary>
-        <para>Box Fill.</para>
+        <para>Identifies a Box Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Erase">
       <summary>
-        <para>Erase.</para>
+        <para>Identifies an Erase Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.FloodFill">
       <summary>
-        <para>Flood Fill.</para>
+        <para>Identifies a Flood Fill Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Move">
       <summary>
-        <para>Move.</para>
+        <para>Identifies a Move Tool.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.GridBrushBase.Tool.Other">
+      <summary>
+        <para>Identifies a Custom Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Paint">
       <summary>
-        <para>Paint.</para>
+        <para>Identifies a Paint Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Pick">
       <summary>
-        <para>Pick.</para>
+        <para>Identifies a Pick Tool.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.Tool.Select">
       <summary>
-        <para>Select.</para>
+        <para>Identifies a Select Tool.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.Tilemaps.ITilemap">
@@ -264,6 +269,12 @@ Only one class at any one time should set defaultBrush to true.</para>
       <summary>
         <para>The size of the Tilemap in cells.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.ITilemap.#ctor(UnityEngine.Tilemaps.Tilemap)">
+      <summary>
+        <para>Initializes and returns an instance of ITilemap.</para>
+      </summary>
+      <param name="tilemap">The Tilemap to wrap.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.ITilemap.GetColor(UnityEngine.Vector3Int)">
       <summary>
@@ -326,6 +337,12 @@ Only one class at any one time should set defaultBrush to true.</para>
       <returns>
         <para>The transform matrix.</para>
       </returns>
+    </member>
+    <member name="?:UnityEngine.Tilemaps.ITilemap.implop_ITilemap(Tilemap)(UnityEngine.Tilemaps.Tilemap)">
+      <summary>
+        <para>Tilemap can be implicitly converted to ITilemap.</para>
+      </summary>
+      <param name="tilemap">The Tilemap to convert to ITilemap.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.ITilemap.RefreshTile(UnityEngine.Vector3Int)">
       <summary>
@@ -412,6 +429,36 @@ Only one class at any one time should set defaultBrush to true.</para>
     <member name="P:UnityEngine.Tilemaps.TileAnimationData.animationStartTime">
       <summary>
         <para>The start time of the animation. The animation will begin at this time offset.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Tilemaps.TileAnimationData.flags">
+      <summary>
+        <para>TileAnimationFlags for controlling the Tile Animation.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.Tilemaps.TileAnimationFlags">
+      <summary>
+        <para>Options for flags controlling behavior for a Tile Animation on a Tilemap.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Tilemaps.TileAnimationFlags.LoopOnce">
+      <summary>
+        <para>Loops the Tile Animation once, then stops on the last Sprite of the animation.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Tilemaps.TileAnimationFlags.None">
+      <summary>
+        <para>Sets no TileAnimationFlags and the Tile Animation will run normally.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Tilemaps.TileAnimationFlags.PauseAnimation">
+      <summary>
+        <para>Pauses the Tile Animation, stopping it from running.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Tilemaps.TileAnimationFlags.UpdatePhysics">
+      <summary>
+        <para>Updates the Physics Shape in the TilemapCollider2D whenever the Tile Animation switches to the next Sprite in the animation.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.Tilemaps.TileBase">
@@ -619,11 +666,24 @@ Only one class at any one time should set defaultBrush to true.</para>
         <para>Gets the anchor point of Tiles in the Tilemap.</para>
       </summary>
     </member>
+    <member name="?:UnityEngine.Tilemaps.Tilemap.tilemapPositionsChanged(System.Action`2&lt;UnityEngine.Tilemaps.Tilemap,Unity.Collections.NativeArray`1&lt;UnityEngine.Vector3Int&gt;&gt;)">
+      <summary>
+        <para>Callback when Tiles on a Tilemap have changed.</para>
+      </summary>
+      <param name="value">A callback set by a user to notify them when Tiles are changed on a Tilemap.</param>
+    </member>
     <member name="?:UnityEngine.Tilemaps.Tilemap.tilemapTileChanged(System.Action`2&lt;UnityEngine.Tilemaps.Tilemap,UnityEngine.Tilemaps.Tilemap/SyncTile[]&gt;)">
       <summary>
         <para>Callback when Tiles on a Tilemap have changed.</para>
       </summary>
       <param name="value">A callback set by a user to notify them when Tiles are changed on a Tilemap.</param>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.AddTileAnimationFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileAnimationFlags)">
+      <summary>
+        <para>Adds the TileAnimationFlags onto the Tile at the given position.</para>
+      </summary>
+      <param name="position">The position of the Tile on the Tilemap.</param>
+      <param name="flags">TileAnimationFlags to add with bitwise OR (|) onto the flags provided by Tile.TileBase.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.AddTileFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileFlags)">
       <summary>
@@ -870,6 +930,15 @@ Only one class at any one time should set defaultBrush to true.</para>
         <para>Tilemaps.TileBase|Tile of type T placed at the cell.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetTileAnimationFlags(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the TileAnimationFlags of the Tile at the given position.</para>
+      </summary>
+      <param name="position">The position of the Tile on the Tilemap.</param>
+      <returns>
+        <para>Returns the TileAnimationFlags of the Tile.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.GetTileFlags(UnityEngine.Vector3Int)">
       <summary>
         <para>Gets the TileFlags of the Tile at the given position.</para>
@@ -1048,9 +1117,16 @@ Only one class at any one time should set defaultBrush to true.</para>
       </summary>
       <param name="position">Position of the Tile on the Tilemap.</param>
     </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.RemoveTileAnimationFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileAnimationFlags)">
+      <summary>
+        <para>Removes the TileAnimationFlags from the Tile at the given position.</para>
+      </summary>
+      <param name="position">The position of the Tile on the Tilemap.</param>
+      <param name="flags">The TileAnimationFlags to remove from the Tile.</param>
+    </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.RemoveTileFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileFlags)">
       <summary>
-        <para>Removes the TileFlags onto the Tile at the given position.</para>
+        <para>Removes the TileFlags from the Tile at the given position.</para>
       </summary>
       <param name="position">Position of the Tile on the Tilemap.</param>
       <param name="flags">TileFlags to remove from the Tile.</param>
@@ -1123,12 +1199,19 @@ Only one class at any one time should set defaultBrush to true.</para>
       <param name="tileChangeData">The Tile with additional properties to be placed in the cell.</param>
       <param name="ignoreLockFlags">Whether to ignore Lock Flags set in the Tile's TileFlags when applying Color and Transform changes from TileChangeData.</param>
     </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.SetTileAnimationFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileAnimationFlags)">
+      <summary>
+        <para>Sets the TileAnimationFlags onto the Tile at the given position.</para>
+      </summary>
+      <param name="position">The position of the Tile on the Tilemap.</param>
+      <param name="flags">The TileAnimationFlags to set onto the Tile.</param>
+    </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.SetTileFlags(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileFlags)">
       <summary>
         <para>Sets the TileFlags onto the Tile at the given position.</para>
       </summary>
       <param name="position">Position of the Tile on the Tilemap.</param>
-      <param name="flags">TileFlags to add onto the Tile.</param>
+      <param name="flags">TileFlags to set onto the Tile.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.SetTiles(UnityEngine.Vector3Int[],UnityEngine.Tilemaps.TileBase[])">
       <summary>
@@ -1203,6 +1286,11 @@ Only one class at any one time should set defaultBrush to true.</para>
     <member name="P:UnityEngine.Tilemaps.TilemapCollider2D.maximumTileChangeCount">
       <summary>
         <para>Maximum number of Tile Changes accumulated before doing a full collider rebuild instead of an incremental rebuild.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Tilemaps.TilemapCollider2D.useDelaunayMesh">
+      <summary>
+        <para>When the value is true, the Collider uses an additional Delaunay triangulation step to produce the Collider mesh. When the value is false, this additional step does not occur.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Tilemaps.TilemapCollider2D.ProcessTilemapChanges">

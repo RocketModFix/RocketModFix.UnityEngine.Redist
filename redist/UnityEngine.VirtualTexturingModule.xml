@@ -102,6 +102,13 @@
         <para>Static class representing the Streaming Virtual Texturing system.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Rendering.VirtualTexturing.Streaming.EnableMipPreloading(System.Int32,System.Int32)">
+      <summary>
+        <para>Enables mipmap level preloading used by Streaming Virtual Texturing.</para>
+      </summary>
+      <param name="texturesPerFrame">Number of textures per frame to process. The range is 0 through 1024. The default is 0. A number of 0 disables preloading. The higher this number, the more CPU resource will be used on the render thread.</param>
+      <param name="mipCount">The number of mipmap levels to preload. The range is 1 through 9. The default is 1, which preloads only the highest mipmap level with the smallest size of 128 by 128 pixels. This is the size of the Streaming Virtual Texturing tile.</param>
+    </member>
     <member name="M:UnityEngine.Rendering.VirtualTexturing.Streaming.GetCPUCacheSize">
       <summary>
         <para>Gets the CPU cache size (in MegaBytes) used by Streaming Virtual Texturing.</para>

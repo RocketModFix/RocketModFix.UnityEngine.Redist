@@ -177,6 +177,9 @@
       </summary>
       <param name="mode"></param>
       <param name="animation"></param>
+      <returns>
+        <para>If no name is supplied and there is no default animation, then this method returns false. Otherwise, it returns true.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Animation.Play(System.String)">
       <summary>
@@ -184,6 +187,9 @@
       </summary>
       <param name="mode"></param>
       <param name="animation"></param>
+      <returns>
+        <para>If no name is supplied and there is no default animation, then this method returns false. Otherwise, it returns true.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Animation.Play(UnityEngine.PlayMode)">
       <summary>
@@ -191,6 +197,9 @@
       </summary>
       <param name="mode"></param>
       <param name="animation"></param>
+      <returns>
+        <para>If no name is supplied and there is no default animation, then this method returns false. Otherwise, it returns true.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Animation.Play(System.String,UnityEngine.PlayMode)">
       <summary>
@@ -198,6 +207,9 @@
       </summary>
       <param name="mode"></param>
       <param name="animation"></param>
+      <returns>
+        <para>If no name is supplied and there is no default animation, then this method returns false. Otherwise, it returns true.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Animation.PlayQueued(System.String)">
       <summary>
@@ -2780,6 +2792,24 @@
         <para>The scale of the transform relative to the parent.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Animations.TransformSceneHandle.GetLocalToParentMatrix(UnityEngine.Animations.AnimationStream)">
+      <summary>
+        <para>Gets the local to parent matrix of the transform.</para>
+      </summary>
+      <param name="stream">The AnimationStream that manages this handle.</param>
+      <returns>
+        <para>Returns the local to parent matrix.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Animations.TransformSceneHandle.GetLocalToWorldMatrix(UnityEngine.Animations.AnimationStream)">
+      <summary>
+        <para>Gets the local to world matrix of the transform.</para>
+      </summary>
+      <param name="stream">The AnimationStream that manages this handle.</param>
+      <returns>
+        <para>Returns the local to world matrix.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Animations.TransformSceneHandle.GetLocalTRS(UnityEngine.Animations.AnimationStream,UnityEngine.Vector3&amp;,UnityEngine.Quaternion&amp;,UnityEngine.Vector3&amp;)">
       <summary>
         <para>Gets the position, rotation and scale of the transform relative to the parent.</para>
@@ -2889,6 +2919,24 @@
       <param name="stream">The AnimationStream that holds the animated values.</param>
       <returns>
         <para>The scale of the transform relative to the parent.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Animations.TransformStreamHandle.GetLocalToParentMatrix(UnityEngine.Animations.AnimationStream)">
+      <summary>
+        <para>Gets the local to parent matrix of the transform.</para>
+      </summary>
+      <param name="stream">The AnimationStream that holds the animated values.</param>
+      <returns>
+        <para>Returns the local to parent matrix.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Animations.TransformStreamHandle.GetLocalToWorldMatrix(UnityEngine.Animations.AnimationStream)">
+      <summary>
+        <para>Gets the local to world matrix of the transform.</para>
+      </summary>
+      <param name="stream">The AnimationStream that holds the animated values.</param>
+      <returns>
+        <para>Returns the local to world matrix.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Animations.TransformStreamHandle.GetLocalTRS(UnityEngine.Animations.AnimationStream,UnityEngine.Vector3&amp;,UnityEngine.Quaternion&amp;,UnityEngine.Vector3&amp;)">
@@ -3060,7 +3108,7 @@
     </member>
     <member name="P:UnityEngine.AnimationState.normalizedTime">
       <summary>
-        <para>The normalized time of the animation.</para>
+        <para>Normalized time of the State.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AnimationState.speed">
@@ -3126,6 +3174,11 @@
     <member name="P:UnityEngine.Animator.avatar">
       <summary>
         <para>Gets/Sets the current Avatar.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Animator.avatarRoot">
+      <summary>
+        <para>Returns the Avatar root Transform.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Animator.bodyPosition">
@@ -3215,7 +3268,7 @@
     </member>
     <member name="P:UnityEngine.Animator.keepAnimatorStateOnDisable">
       <summary>
-        <para>Controls the behaviour of the Animator component when a GameObject is disabled.</para>
+        <para>Controls the behaviour of the Animator component when a GameObject is inactive.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Animator.layerCount">
@@ -3408,9 +3461,12 @@
     </member>
     <member name="M:UnityEngine.Animator.GetBoneTransform(UnityEngine.HumanBodyBones)">
       <summary>
-        <para>Returns Transform mapped to this human bone id. Returns null if the animator is disabled, if it does not have a human description, or if the bone id is invalid.</para>
+        <para>Retrieves the Transform mapped to a human bone based on its id.</para>
       </summary>
-      <param name="humanBoneId">The human bone that is queried, see enum HumanBodyBones for a list of possible values.</param>
+      <param name="humanBoneId">The human bone to be queried. See the HumanBodyBones enum for a list of possible values.</param>
+      <returns>
+        <para>Returns the Transform mapped to the human bone. Returns null if the human bone has no Transform.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Animator.GetBool(System.String)">
       <summary>
@@ -3874,7 +3930,7 @@
         <para>Sets the rotation of an IK goal.</para>
       </summary>
       <param name="goal">The AvatarIKGoal that is set.</param>
-      <param name="goalRotation">The rotation in world space.</param>
+      <param name="goalRotation">The rotation of the goal in world space which should follow Unity's world coordinates convention (see below).</param>
     </member>
     <member name="M:UnityEngine.Animator.SetIKRotationWeight(UnityEngine.AvatarIKGoal,System.Single)">
       <summary>
@@ -5649,7 +5705,9 @@ Each joint local transform is represented by 3 floats for the translation and 4 
     </member>
     <member name="M:UnityEngine.Playables.AnimationPlayableUtilities.Play(UnityEngine.Animator,UnityEngine.Playables.Playable,UnityEngine.Playables.PlayableGraph)">
       <summary>
-        <para>Plays the Playable on  the given Animator.</para>
+        <para>Plays the Playable on  the given Animator.
+
+                    Note: This method is deprecated as it overrides the Time Update Mode of the Playable Graph. For an equivalent function, refer to the example below.</para>
       </summary>
       <param name="animator">Target Animator.</param>
       <param name="playable">The Playable that will be played.</param>
@@ -5771,47 +5829,62 @@ Each joint local transform is represented by 3 floats for the translation and 4 
     </member>
     <member name="T:UnityEngine.StateMachineBehaviour">
       <summary>
-        <para>StateMachineBehaviour is a component that can be added to a state machine state. It's the base class every script on a state derives from.</para>
+        <para>StateMachineBehaviour is a component that can be added to a state machine state. It's the base class any script on a state must derive from.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateEnter">
       <summary>
-        <para>Called on the first Update frame when a state machine evaluate this state.</para>
+        <para>Invoked on the first update frame when a state machine evaluates this state. Implement this message to react to a new state starting.</para>
       </summary>
+      <param name="animator">The Animator evaluating this state machine.</param>
+      <param name="animatorStateInfo">Information about the entered state.</param>
+      <param name="layerIndex">The current layer being evaluated.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateExit">
       <summary>
-        <para>Called on the last update frame when a state machine evaluate this state.</para>
+        <para>Invoked on the last update frame when a state machine evaluates this state. Implement this message to react to a state ending.</para>
       </summary>
+      <param name="animator">The Animator evaluating this state machine.</param>
+      <param name="animatorStateInfo">Information about the exited state.</param>
+      <param name="layerIndex">The current layer being evaluated.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateIK">
       <summary>
-        <para>Called right after MonoBehaviour.OnAnimatorIK.</para>
+        <para>Invoked during the Animator IK pass. Implement this message to modify the result of the animation after the evaluation of the state machine on a state by state basis.</para>
       </summary>
+      <param name="animator">The Animator evaluating this state machine.</param>
+      <param name="animatorStateInfo">Information about the state being evaluated.</param>
+      <param name="layerIndex">The current layer being evaluated.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateMachineEnter(UnityEngine.Animator,System.Int32)">
       <summary>
-        <para>Called on the first Update frame when making a transition to a state machine. This is not called when making a transition into a state machine sub-state.</para>
+        <para>Invoked on the first update frame when taking a transition into a state machine. Implement this message to influence the entry transition into the sub-state machine.</para>
       </summary>
-      <param name="animator">The Animator playing this state machine.</param>
-      <param name="stateMachinePathHash">The full path hash for this state machine.</param>
+      <param name="animator">The Animator evaluating the state machine.</param>
+      <param name="stateMachinePathHash">The hash of the full path to the state machine.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateMachineExit(UnityEngine.Animator,System.Int32)">
       <summary>
-        <para>Called on the last Update frame when making a transition out of a StateMachine. This is not called when making a transition into a StateMachine sub-state.</para>
+        <para>Invoked on the last update frame when taking a transition out of a StateMachine. Implement this message to influence the exit transition out of the sub-state machine</para>
       </summary>
-      <param name="animator">The Animator playing this state machine.</param>
-      <param name="stateMachinePathHash">The full path hash for this state machine.</param>
+      <param name="animator">The Animator evaluating the state machine.</param>
+      <param name="stateMachinePathHash">The hash of the full path to the state machine.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateMove">
       <summary>
-        <para>Called right after MonoBehaviour.OnAnimatorMove.</para>
+        <para>Invoked during the Animator Root Motion pass. Implement this message to modify the result of the animation root motion on a state by state basis.</para>
       </summary>
+      <param name="animator">The Animator evaluating this state machine.</param>
+      <param name="animatorStateInfo">Information about the state being evaluated.</param>
+      <param name="layerIndex">The current layer being evaluated.</param>
     </member>
     <member name="M:UnityEngine.StateMachineBehaviour.OnStateUpdate">
       <summary>
-        <para>Called at each Update frame except for the first and last frame.</para>
+        <para>Invoked on each update frame except for the first and last frame. Implement this message to execute custom logic on a state by state basis.</para>
       </summary>
+      <param name="animator">The Animator evaluating this state machine.</param>
+      <param name="animatorStateInfo">Information about the state being evaluated.</param>
+      <param name="layerIndex">The current layer being evaluated.</param>
     </member>
     <member name="A:UnityEngine.AnimationModule">
       <summary>

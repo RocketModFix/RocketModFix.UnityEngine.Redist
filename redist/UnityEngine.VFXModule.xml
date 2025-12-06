@@ -4,6 +4,56 @@
     <assembly>
       <name>UnityEngine.VFXModule</name>
     </assembly>
+    <member name="T:UnityEngine.VFX.VFXBatchedEffectInfo">
+      <summary>
+        <para>This structure provides runtime information on how Unity batches a VisualEffectAsset.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.activeBatchCount">
+      <summary>
+        <para>The number of active batches the VisualEffectAsset uses.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.activeInstanceCount">
+      <summary>
+        <para>The number of active VisualEffect instances of this VisualEffectAsset.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.inactiveBatchCount">
+      <summary>
+        <para>The number of inactive batches that are allocated for later reuse.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.maxInstancePerBatchCapacity">
+      <summary>
+        <para>The maximum number of VisualEffect that can be instanciated in a single batch.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.totalCPUSizeInBytes">
+      <summary>
+        <para>The CPU size, in bytes, that the batches of this VisualEffectAsset use.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.totalGPUSizeInBytes">
+      <summary>
+        <para>The GPU size, in bytes, that the batches of this VisualEffectAsset use.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.totalInstanceCapacity">
+      <summary>
+        <para>The total number of VisualEffect that can be instanciated with the current allocated batches.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.unbatchedInstanceCount">
+      <summary>
+        <para>The number of VisualEffect instances that are not batched.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VFX.VFXBatchedEffectInfo.vfxAsset">
+      <summary>
+        <para>The VisualEffectAsset associated with this Batched Effect Info.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.VFX.VFXCameraBufferTypes">
       <summary>
         <para>This enumeration describes Camera buffer types.</para>
@@ -668,6 +718,26 @@
       <summary>
         <para>The maximum allowed delta time for an update interval. This limit affects fixedDeltaTime and deltaTime. The tick rate is in seconds.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.VFX.VFXManager.FlushEmptyBatches">
+      <summary>
+        <para>Deallocates all empty batches used in the VFX runtime.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.VFX.VFXManager.GetBatchedEffectInfo(UnityEngine.VFX.VisualEffectAsset)">
+      <summary>
+        <para>Gets information on how a Visual Effect Asset is batched.</para>
+      </summary>
+      <param name="vfx">The Visual Effect Asset</param>
+      <returns>
+        <para>A VFXBatchedEffectInfo instance.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VFX.VFXManager.GetBatchedEffectInfos(System.Collections.Generic.List`1&lt;UnityEngine.VFX.VFXBatchedEffectInfo&gt;)">
+      <summary>
+        <para>Gets batch information of all active Visual Effect Assets.</para>
+      </summary>
+      <param name="infos">The List that this function populates with the VFXBatchedEffectInfo.</param>
     </member>
     <member name="M:UnityEngine.VFX.VFXManager.IsCameraBufferNeeded(UnityEngine.Camera)">
       <summary>
