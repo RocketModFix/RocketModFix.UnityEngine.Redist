@@ -5,6 +5,8 @@ on:
     branches: [ master ]
     paths:
       - 'redist/**'
+      - '.github/workflows/RocketModFix.UnityEngine.Redist.yaml'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,15 +14,22 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v6
+
     - uses: actions/setup-dotnet@v5
       name: Setup .NET
+      env:
+          DOTNET_NOLOGO: true
+          DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+          DOTNET_CLI_TELEMETRY_OPTOUT: true
       with:
         dotnet-version: 8.x
+
     - uses: nuget/setup-nuget@v2
       name: Setup NuGet
       with:
         nuget-api-key: ${{ secrets.NUGET_DEPLOY_KEY }}
         nuget-version: '5.x'
+        
     - uses: ./.github/actions/nuget-pack
       id: nuget-pack
       with:
