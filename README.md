@@ -4,6 +4,10 @@
 
 You simply install a NuGet package in your IDE to get all and the latest UnityEngine libraies. If you're tired to copy 100+ libraries into your project this is a great solution for you.
 
+## Breaking Changes
+
+`UnityEx.dll` was removed starting with UnityEngine Redist 2022.3.62.1 because it belongs to Unturned, not the Unity runtime. If you still need it, grab it by using the [Unturned Redist package](https://github.com/RocketModFix/RocketModFix.Unturned.Redist).
+
 ## Installation
 
 Installation is done by using the [RocketModFix.UnityEngine.Redist][nuget_package_RocketModFix.UnityEngine.Redist] NuGet package.
