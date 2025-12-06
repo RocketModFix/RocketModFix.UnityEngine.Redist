@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>RocketModFix.UnityEngine.Redist</id>
-    <version>2022.3.62.1</version>
+    <version>2022.3.62f3</version>
     <description>UnityEngine redistributables for RocketModFix and plugins.</description>
     <authors>Unity;RocketModFix</authors>
-    <license type="file">LICENSE.txt</license>
+    <license type="file">LICENSE</license>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectUrl>https://github.com/RocketModFix/RocketModFix.UnityEngine.Redist</projectUrl>
     <repository type="git" url="https://github.com/RocketModFix/RocketModFix.UnityEngine.Redist" />
@@ -19,8 +19,8 @@
     <file src="*.xml" target="lib\netstandard2.1"/>
     <file src="*.dll" target="lib\net40"/>
     <file src="*.xml" target="lib\net40"/>
-    <file src="LICENSE.txt" target=""/>
-    <file src="README.md" target="README.md"/>
-    <file src="icon.png" target="icon.png"/>
+    <file src="../LICENSE" target="LICENSE"/>
+    <file src="../README.md" target="README.md"/>
+    <file src="../icon.png" target="icon.png"/>
   </files>
 </package>
