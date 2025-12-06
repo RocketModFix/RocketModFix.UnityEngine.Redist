@@ -13,16 +13,30 @@ if not exist "%destinationDirectory%" (
     exit /b 1
 )
 
-rem Loop through all files in the source directory
-for %%F in ("%sourceDirectory%\*.*") do (
-    rem Check if the file exists in the destination directory
-    if exist "%destinationDirectory%\%%~nxF" (
-        rem Replace the file in the destination directory
-        copy /y "%%F" "%destinationDirectory%"
-        echo %%~nxF replaced.
-    ) else (
-        echo %%~nxF does not exist in the destination directory.
+rem Ensure the source directory exists
+if not exist "%sourceDirectory%" (
+    echo Source directory does not exist.
+    exit /b 1
+)
+
+rem Only process redistributable payloads (ignore nuspec/readme/license)
+set "missingCount=0"
+for %%F in ("%destinationDirectory%\*.dll" "%destinationDirectory%\*.xml") do (
+    if not exist "%sourceDirectory%\%%~nxF" (
+        echo Missing in managed directory: %%~nxF
+        set /a missingCount+=1
     )
+)
+
+if !missingCount! gtr 0 (
+    echo Found !missingCount! missing file(s) in the managed directory. Aborting.
+    exit /b 1
+)
+
+rem Second pass: copy files now that all exist
+for %%F in ("%destinationDirectory%\*.dll" "%destinationDirectory%\*.xml") do (
+    copy /y "%sourceDirectory%\%%~nxF" "%destinationDirectory%" >nul
+    echo %%~nxF replaced.
 )
 
 echo Replacement completed.
