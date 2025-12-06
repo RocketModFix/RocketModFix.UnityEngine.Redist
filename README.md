@@ -14,3 +14,9 @@ Installation is done by using the [RocketModFix.UnityEngine.Redist][nuget_packag
 ## Update
 
 If you want to update redist then run `update.bat` and input the path to the Unturned Managed directory, and commit ;)
+
+## Finding the Unity Engine version
+
+1. Open your Unturned install folder (for example `C:\Program Files (x86)\Steam\steamapps\common\Unturned`).
+2. Right-click `UnityPlayer.dll` (or `Unturned.exe`) in that root folder and choose Properties.
+3. Go to the Details tab and copy the `File version` value - that's the Unity Engine version.
