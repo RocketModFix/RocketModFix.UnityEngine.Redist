@@ -1,0 +1,7 @@
+Unity runtime and module binaries in this package are subject to the Unity Terms of Service and Unity Software Additional Terms.
+
+The latest version is published by Unity at:
+- https://unity.com/legal/terms-of-service
+- https://unity.com/legal/terms-of-service/software
+
+This package only redistributes the binaries shipped with Unturned; the MIT license in the repository applies to the packaging scripts and metadata, not the Unity binaries themselves.

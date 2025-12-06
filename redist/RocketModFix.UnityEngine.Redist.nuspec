@@ -21,6 +21,7 @@
     <file src="*.xml" target="lib\net40"/>
     <file src="../LICENSE" target="LICENSE"/>
     <file src="../README.md" target="README.md"/>
+    <file src="Unity-License.txt" target="Unity-License.txt"/>
     <file src="../icon.png" target="icon.png"/>
   </files>
 </package>

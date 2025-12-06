@@ -25,3 +25,8 @@ If you want to update redist then run `update.bat` and input the path to the Unt
 2. Right click `UnityPlayer.dll` (or `Unturned.exe`) in that root folder and choose Properties.
 3. Go to the Details tab and copy the `File version` value - that's the Unity Engine version.
 4. Optionally install the same Unity Editor version and copy its `.xml` docs if they're missing in Managed, so your IDE still shows API hints.
+
+## Licensing
+
+- Packaging scripts/metadata: MIT license (see `LICENSE` in the repo root).
+- Unity binaries we redistribute: Unity Terms of Service and Unity Software Additional Terms (see `Unity-License.txt` in the package or https://unity.com/legal/terms-of-service and https://unity.com/legal/terms-of-service/software for the current text).
