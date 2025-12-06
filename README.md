@@ -6,7 +6,7 @@ You simply install a NuGet package in your IDE to get all and the latest UnityEn
 
 ## Breaking Changes
 
-`UnityEx.dll` was removed starting with UnityEngine Redist 2022.3.62.1 because it belongs to Unturned, not the Unity runtime. If you still need it, grab it by using the [Unturned Redist package](https://github.com/RocketModFix/RocketModFix.Unturned.Redist).
+Starting with UnityEngine Redist 2022.3.62.1, UnityEx.dll is shipped only with the Unturned Redist package, because it is part of Unturned rather than the Unity runtime. If you still rely on UnityEx.dll, please obtain it from the [Unturned Redist package](https://www.nuget.org/packages/RocketModFix.Unturned.Redist.Client)
 
 ## Installation
 
