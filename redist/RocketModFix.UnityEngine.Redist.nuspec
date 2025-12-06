@@ -7,6 +7,10 @@
     <authors>Unity;RocketModFix</authors>
     <license type="file">LICENSE.txt</license>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectUrl>https://github.com/RocketModFix/RocketModFix.UnityEngine.Redist</projectUrl>
+    <repository type="git" url="https://github.com/RocketModFix/RocketModFix.UnityEngine.Redist" />
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
   </metadata>
   <files>
     <file src="*.dll" target="lib\netstandard2.0"/>
@@ -16,5 +20,7 @@
     <file src="*.dll" target="lib\net40"/>
     <file src="*.xml" target="lib\net40"/>
     <file src="LICENSE.txt" target=""/>
+    <file src="README.md" target="README.md"/>
+    <file src="icon.png" target="icon.png"/>
   </files>
 </package>
