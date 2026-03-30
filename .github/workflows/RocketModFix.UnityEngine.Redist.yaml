@@ -24,7 +24,7 @@ jobs:
       with:
         dotnet-version: 8.x
 
-    - uses: nuget/setup-nuget@v2
+    - uses: nuget/setup-nuget@v3
       name: Setup NuGet
       with:
         nuget-api-key: ${{ secrets.NUGET_DEPLOY_KEY }}
